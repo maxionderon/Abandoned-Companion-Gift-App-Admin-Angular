@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a:link {
+    text-decoration: none;
+    color: black;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+  
+  a:active {
+    text-decoration: none;
+    color: black;
+  }
+
+  .love {
+
+    color: #D50000;
+
+}
+
+.favorite{
+
+    color:#1B5E20;
+
+
+}
+
+.like {
+
+    color: #304FFE;
+
+
+}
+
+.indifferent {
+
+    color: #BDBDBD;
+
+}
+
+.maxionderon-card-background {
+
+  background-color: #ffe0b2
+
+}
