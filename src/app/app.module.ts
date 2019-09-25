@@ -15,6 +15,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon'; 
+import {MatListModule} from '@angular/material/list'; 
 
 import { AffiliationComponent } from './components/affiliation/affiliation.component';
 
@@ -37,7 +38,8 @@ import { AffiliationComponent } from './components/affiliation/affiliation.compo
     MatFormFieldModule,
     MatInputModule,    
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
     
   ],
   providers: [],

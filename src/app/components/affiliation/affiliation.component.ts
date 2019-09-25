@@ -12,9 +12,13 @@ export class AffiliationComponent implements OnInit {
 
   affiliationName = new FormControl();
 
+  affiliations: Affiliation[];
+
   constructor(private affiliationService: AffiliationService) { }
 
   ngOnInit() {
+
+    this.getAffiliations();
 
   }
 
@@ -26,9 +30,34 @@ export class AffiliationComponent implements OnInit {
       affiliation.id = 0;
       affiliation.name = this.affiliationName.value;
 
-      this.affiliationService.postAffiliation(affiliation).subscribe();
+      this.affiliationService.postAffiliation(affiliation).subscribe( response => {
+
+        this.affiliations = response;
+
+      });
 
     }
+
+  }
+
+  getAffiliations(): void {
+
+    this.affiliationService.getAffiliations().subscribe( e => {
+
+      this.affiliations = e;
+
+    });
+
+  }
+
+  deleteAffiliation(affiliation: Affiliation): void {
+    console.log(affiliation.id);
+
+    this.affiliationService.deleteAffiliation(affiliation.id).subscribe(response => {
+
+      this.affiliations = response;
+    
+    });
 
   }
 

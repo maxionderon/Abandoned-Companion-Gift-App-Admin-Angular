@@ -28,6 +28,11 @@ export class AffiliationService {
     
   }
 
+  deleteAffiliation(id: number): Observable<any> {
+
+    return this.http.delete(this.url + "/" + id);
+
+  }
   
 
 }
