@@ -43,7 +43,7 @@
                     
                 <mat-list-item *ngFor="let affiliation of affiliations" style="width: 100%;">
                     
-                    <app-affiliation-element [affiliation]="affiliation" style="width: 100%"></app-affiliation-element>
+                    <app-affiliation-element [affiliation]="affiliation" (eventDeleteAffiliation)="deleteAffiliation($event)" (eventUpdateAffiliation)="updateAffiliation($event)" style="width: 100%"></app-affiliation-element>
                                         
                 </mat-list-item>
             </mat-list>

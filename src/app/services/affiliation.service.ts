@@ -28,6 +28,12 @@ export class AffiliationService {
     
   }
 
+  putAffiliation(affiliation: Affiliation): Observable<any> {
+
+    return this.http.put(this.url + "/" + affiliation.id, affiliation, this.httpOptions);
+
+  }
+
   deleteAffiliation(id: number): Observable<any> {
 
     return this.http.delete(this.url + "/" + id);

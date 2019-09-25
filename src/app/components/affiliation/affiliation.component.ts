@@ -50,19 +50,24 @@ export class AffiliationComponent implements OnInit {
 
   }
 
-  putAffiliation(affiliation: Affiliation):void {
+  updateAffiliation(affiliation: Affiliation):void {
+
+    this.affiliationService.putAffiliation(affiliation).subscribe(response => {
+
+      this.affiliations = response;
+
+    });
 
   }
 
   deleteAffiliation(affiliation: Affiliation): void {
-    console.log(affiliation.id);
-
+    
     this.affiliationService.deleteAffiliation(affiliation.id).subscribe(response => {
 
       this.affiliations = response;
     
     });
-
+    
   }
 
 }

@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, ElementRef, ViewChild, Output } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, EventEmitter, Output } from '@angular/core';
 import { Affiliation } from 'src/app/model/affiliation';
-import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-affiliation-element',
@@ -12,10 +11,10 @@ export class AffiliationElementComponent implements OnInit {
   @Input('affiliation')
   affiliation: Affiliation;
 
-  
+  @Output()
   eventDeleteAffiliation = new EventEmitter();
 
-  
+  @Output()
   eventUpdateAffiliation = new EventEmitter();
 
   @ViewChild('kek', {static: false})
@@ -54,6 +53,16 @@ export class AffiliationElementComponent implements OnInit {
     this.readonly = true;
     this.defaultOptionsDisabled = false;
     this.showModOptions = false;
+
+    this.affiliation.name = this.affiliationField.nativeElement.value;
+
+    this.eventUpdateAffiliation.emit(this.affiliation );
+
+  }
+
+  deleteAffiliation(): void {
+
+    this.eventDeleteAffiliation.emit(this.affiliation);
 
   }
   
