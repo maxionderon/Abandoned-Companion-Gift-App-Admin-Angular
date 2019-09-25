@@ -50,6 +50,10 @@ export class AffiliationComponent implements OnInit {
 
   }
 
+  putAffiliation(affiliation: Affiliation):void {
+
+  }
+
   deleteAffiliation(affiliation: Affiliation): void {
     console.log(affiliation.id);
 

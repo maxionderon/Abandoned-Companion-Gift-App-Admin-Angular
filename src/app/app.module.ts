@@ -16,14 +16,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatListModule} from '@angular/material/list'; 
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AffiliationComponent } from './components/affiliation/affiliation.component';
+import { AffiliationElementComponent } from './components/affiliation-element/affiliation-element.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AffiliationComponent
+    AffiliationComponent,
+    AffiliationElementComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { AffiliationComponent } from './components/affiliation/affiliation.compo
     MatInputModule,    
     MatCardModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatTooltipModule
     
   ],
   providers: [],
