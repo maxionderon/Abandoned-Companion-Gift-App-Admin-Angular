@@ -17,8 +17,8 @@ export class AffiliationElementComponent implements OnInit {
   @Output()
   eventUpdateAffiliation = new EventEmitter();
 
-  @ViewChild('kek', {static: false})
-  affiliationField: ElementRef;
+  @ViewChild('inputAffiliationName', {static: false})
+  inputAffiliationName: ElementRef;
 
   readonly: boolean = true;
   defaultOptionsDisabled: boolean = false;
@@ -36,7 +36,7 @@ export class AffiliationElementComponent implements OnInit {
     this.defaultOptionsDisabled = true;
     this.showModOptions = true;
 
-    this.affiliationField.nativeElement.select();
+    this.inputAffiliationName.nativeElement.select();
 
   }
 
@@ -54,7 +54,7 @@ export class AffiliationElementComponent implements OnInit {
     this.defaultOptionsDisabled = false;
     this.showModOptions = false;
 
-    this.affiliation.name = this.affiliationField.nativeElement.value;
+    this.affiliation.name = this.inputAffiliationName.nativeElement.value;
 
     this.eventUpdateAffiliation.emit(this.affiliation );
 

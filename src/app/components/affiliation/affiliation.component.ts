@@ -10,8 +10,6 @@ import { FormControl } from '@angular/forms';
 })
 export class AffiliationComponent implements OnInit {
 
-  affiliationName = new FormControl();
-
   affiliations: Affiliation[];
 
   createMode: boolean = false;

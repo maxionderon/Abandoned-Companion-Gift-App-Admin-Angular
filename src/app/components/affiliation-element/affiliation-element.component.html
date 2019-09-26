@@ -1,7 +1,7 @@
 <div style="display: flex; flex-wrap: nowrap; align-items: center">
 
     <mat-form-field style="min-width: 70%; width: 100%;">
-        <input #kek matInput [value]="affiliation.name" [readonly]="readonly" >
+        <input #inputAffiliationName matInput [value]="affiliation.name" [readonly]="readonly" >
     </mat-form-field>
 
     <button class="updateButton" mat-icon-button aria-label="update button icon" matTooltip="Update Affiliation" (click)="updateAffiliation()" *ngIf="showModOptions">
