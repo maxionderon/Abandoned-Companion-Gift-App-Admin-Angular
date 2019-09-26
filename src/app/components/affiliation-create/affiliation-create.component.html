@@ -1,0 +1,36 @@
+<mat-card class="maxionderon-card-background">
+    <mat-card-header>
+        <mat-card-title>Affiliation</mat-card-title>
+        <mat-card-subtitle>Create New</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <mat-card>
+            <form>
+                <mat-form-field floatLabel="always" style="width: 100%">
+                    <mat-label>Name of the Affiliation</mat-label>
+                    <input #inputNewAffiliation matInput placeholder="Name the new Affiliation" required
+                        [formControl]="affiliationName">
+                </mat-form-field>
+            </form>
+
+            <mat-card-actions>
+                <button mat-stroked-button (click)="createAffiliation()">
+                    <mat-icon class="createIcon">add_circle_outline</mat-icon>
+                    <span>Create Affiliation</span>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-stroked-button (click)="abortAffiliationCreation()">
+            <mat-icon class="createIcon">clear</mat-icon>
+            <span>Abort Creation</span>
+        </button>
+    </mat-card-actions>
+
+</mat-card>

@@ -36,7 +36,7 @@ export class AffiliationElementComponent implements OnInit {
     this.defaultOptionsDisabled = true;
     this.showModOptions = true;
 
-    this.affiliationField.nativeElement.focus();
+    this.affiliationField.nativeElement.select();
 
   }
 

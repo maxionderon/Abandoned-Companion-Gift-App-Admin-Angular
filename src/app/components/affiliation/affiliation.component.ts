@@ -14,6 +14,8 @@ export class AffiliationComponent implements OnInit {
 
   affiliations: Affiliation[];
 
+  createMode: boolean = false;
+
   constructor(private affiliationService: AffiliationService) { }
 
   ngOnInit() {
@@ -22,21 +24,13 @@ export class AffiliationComponent implements OnInit {
 
   }
 
-  createAffiliation(): void {
-
-    if(this.affiliationName.valid) {
-
-      let affiliation = new Affiliation();
-      affiliation.id = 0;
-      affiliation.name = this.affiliationName.value;
+  createAffiliation(affiliation: Affiliation): void {    
 
       this.affiliationService.postAffiliation(affiliation).subscribe( response => {
 
         this.affiliations = response;
 
-      });
-
-    }
+      });    
 
   }
 
@@ -68,6 +62,18 @@ export class AffiliationComponent implements OnInit {
     
     });
     
+  }
+
+  hideAffiliationsAndShowCreate(): void {
+
+    this.createMode = true;
+
+  }
+
+  showAffiliationAndHideCreate(): void {
+
+    this.createMode = false;
+
   }
 
 }

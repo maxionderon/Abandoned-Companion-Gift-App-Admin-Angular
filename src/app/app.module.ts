@@ -20,13 +20,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AffiliationComponent } from './components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-element/affiliation-element.component';
+import { AffiliationCreateComponent } from './components/affiliation-create/affiliation-create.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AffiliationComponent,
-    AffiliationElementComponent
+    AffiliationElementComponent,
+    AffiliationCreateComponent
   ],
   imports: [
     BrowserModule,
