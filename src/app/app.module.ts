@@ -21,6 +21,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AffiliationComponent } from './components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-element/affiliation-element.component';
 import { AffiliationCreateComponent } from './components/affiliation-create/affiliation-create.component';
+import { GiftTypeComponent } from './components/gift-type/gift-type.component';
+import { GiftTypeCreateComponent } from './components/gift-type-create/gift-type-create.component';
+import { GiftTypeElementComponent } from './components/gift-type-element/gift-type-element.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { AffiliationCreateComponent } from './components/affiliation-create/affi
     AppComponent,
     AffiliationComponent,
     AffiliationElementComponent,
-    AffiliationCreateComponent
+    AffiliationCreateComponent,
+    GiftTypeComponent,
+    GiftTypeCreateComponent,
+    GiftTypeElementComponent
   ],
   imports: [
     BrowserModule,
