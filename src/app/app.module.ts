@@ -17,6 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatListModule} from '@angular/material/list'; 
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AffiliationComponent } from './components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-element/affiliation-element.component';
@@ -27,6 +28,8 @@ import { GiftTypeElementComponent } from './components/gift-type-element/gift-ty
 import { GiftReactionComponent } from './components/gift-reaction/gift-reaction.component';
 import { GiftReactionCreateComponent } from './components/gift-reaction-create/gift-reaction-create.component';
 import { GiftReactionElementComponent } from './components/gift-reaction-element/gift-reaction-element.component';
+import { CompanionCreateComponent } from './components/companion-create/companion-create.component';
+import { CompanionCreateAddAffiliationComponent } from './components/companion-create-add-affiliation/companion-create-add-affiliation.component';
 
 
 @NgModule({
@@ -40,7 +43,9 @@ import { GiftReactionElementComponent } from './components/gift-reaction-element
     GiftTypeElementComponent,
     GiftReactionComponent,
     GiftReactionCreateComponent,
-    GiftReactionElementComponent
+    GiftReactionElementComponent,
+    CompanionCreateComponent,
+    CompanionCreateAddAffiliationComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import { GiftReactionElementComponent } from './components/gift-reaction-element
     MatCardModule,
     MatIconModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule
     
   ],
   providers: [],

@@ -1,0 +1,30 @@
+<mat-card>
+
+    <mat-card-header>
+        <mat-card-title>Companion</mat-card-title>
+        <mat-card-subtitle>Create New Companion</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Companion Name">
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%">
+            <textarea matInput placeholder="Companion Description"></textarea>
+        </mat-form-field>
+
+        <div *ngFor="let affiliation of affiliations">{{affiliation.name}}</div>
+
+        <div *ngFor="let gift of gifts">{{gift.id}}</div>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        
+    </mat-card-actions>
+
+</mat-card>
+
+<app-companion-create-add-affiliation [affiliations]="affiliations" (eventAddNewAffiliationToCompanion)="addAffiliationToCompanion($event)"></app-companion-create-add-affiliation>

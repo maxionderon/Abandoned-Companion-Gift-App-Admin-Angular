@@ -1,0 +1,8 @@
+<mat-form-field>
+    <mat-select placeholder="Affiliation" [formControl]="formControlAffiliationSelect" required>
+        <mat-option *ngFor="let affiliation of affiliationOptions" [value]="affiliation" >{{affiliation.name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+<button mat-icon-button aria-label="add affiliation button" (click)="addAffiliationToCompanion()">
+    <mat-icon>add_circle_outline</mat-icon>
+</button>
