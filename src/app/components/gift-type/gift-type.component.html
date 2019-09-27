@@ -33,7 +33,7 @@
 
 </mat-card>
 
-<app-gift-type-create [hidden]="!createMode" 
+<app-gift-type-create *ngIf="createMode" 
     (eventAbortCreation)="showGiftTypesAndHideCreate()"
     (eventCreateGiftType)="showGiftTypesAndHideCreate(); createGiftType($event)"
     >

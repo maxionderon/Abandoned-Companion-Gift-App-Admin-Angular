@@ -1,0 +1,40 @@
+<mat-card class="maxionderon-card-background" *ngIf="!createMode">
+
+    <mat-card-header>
+        <mat-card-title>Gift Reactions</mat-card-title>
+        <mat-card-subtitle>Current Reactions</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <mat-card>
+
+            <mat-list>
+
+                <mat-list-item *ngFor="let giftReaction of giftReactions" style="width: 100%">
+
+                    <app-gift-reaction-element [giftReaction]="giftReaction"
+                        (eventDeleteGiftReaction)="deleteGiftReaction($event)"
+                        (eventUpdateGiftReaction)="updateGiftReaction($event)"
+                    style="width: 100%"></app-gift-reaction-element>
+
+
+                </mat-list-item>
+
+            </mat-list>
+
+        </mat-card>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-stroked-button (click)="hideGiftReactionsAndShowCreate()">
+            <mat-icon class="createIcon">add_circle_outline</mat-icon>
+            <span>Create New Gift Reaction</span>
+        </button>
+    </mat-card-actions>
+
+</mat-card>
+
+<app-gift-reaction-create *ngIf="createMode" (eventAbortCreation)="showGiftReactionsAndHideCreate()"
+    (eventCreateGiftReaction)="showGiftReactionsAndHideCreate(); createGiftReaction($event)"></app-gift-reaction-create>

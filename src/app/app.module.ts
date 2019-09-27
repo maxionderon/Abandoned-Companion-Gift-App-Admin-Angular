@@ -24,6 +24,9 @@ import { AffiliationCreateComponent } from './components/affiliation-create/affi
 import { GiftTypeComponent } from './components/gift-type/gift-type.component';
 import { GiftTypeCreateComponent } from './components/gift-type-create/gift-type-create.component';
 import { GiftTypeElementComponent } from './components/gift-type-element/gift-type-element.component';
+import { GiftReactionComponent } from './components/gift-reaction/gift-reaction.component';
+import { GiftReactionCreateComponent } from './components/gift-reaction-create/gift-reaction-create.component';
+import { GiftReactionElementComponent } from './components/gift-reaction-element/gift-reaction-element.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { GiftTypeElementComponent } from './components/gift-type-element/gift-ty
     AffiliationCreateComponent,
     GiftTypeComponent,
     GiftTypeCreateComponent,
-    GiftTypeElementComponent
+    GiftTypeElementComponent,
+    GiftReactionComponent,
+    GiftReactionCreateComponent,
+    GiftReactionElementComponent
   ],
   imports: [
     BrowserModule,

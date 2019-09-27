@@ -37,7 +37,7 @@
 
 </mat-card>
 
-<app-affiliation-create [hidden]="!createMode"
+<app-affiliation-create *ngIf="createMode"
     (eventAbortCreation)="showAffiliationAndHideCreate()"
     (eventCreateAffiliation)="showAffiliationAndHideCreate(); createAffiliation($event)"    
 >
