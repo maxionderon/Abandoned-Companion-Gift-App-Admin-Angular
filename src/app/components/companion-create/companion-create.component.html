@@ -15,16 +15,30 @@
             <textarea matInput placeholder="Companion Description"></textarea>
         </mat-form-field>
 
-        <div *ngFor="let affiliation of affiliations">{{affiliation.name}}</div>
+        <mat-list>
+            <mat-list-item *ngFor="let affiliation of companionAffiliations" style="width: 100%">
+                <app-companion-create-affiliation-element 
+                    [affiliation]="affiliation" 
+                    (eventRemoveAffiliation)="removeAffiliationFromCompanion($event)"
+                    style="width: 100%">
+                </app-companion-create-affiliation-element>
+            </mat-list-item>
+            <mat-list-item *ngIf="affiliationOptions.length > 0" style="width: 100%">
+                <app-companion-create-add-affiliation [affiliationOptions]="affiliationOptions"
+                    (eventAddNewAffiliationToCompanion)="addAffiliationToCompanion($event)"
+                    style="width: 100%">
+                </app-companion-create-add-affiliation>
+            </mat-list-item>
+        </mat-list>
 
-        <div *ngFor="let gift of gifts">{{gift.id}}</div>
+
+
+        <div *ngFor="let gift of companionGifts">{{gift.id}}</div>
 
     </mat-card-content>
 
     <mat-card-actions>
-        
+
     </mat-card-actions>
 
 </mat-card>
-
-<app-companion-create-add-affiliation [affiliations]="affiliations" (eventAddNewAffiliationToCompanion)="addAffiliationToCompanion($event)"></app-companion-create-add-affiliation>

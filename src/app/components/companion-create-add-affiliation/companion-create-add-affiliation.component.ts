@@ -10,72 +10,25 @@ import { FormControl } from '@angular/forms';
 })
 export class CompanionCreateAddAffiliationComponent implements OnInit {
 
+  @Input("affiliationOptions")
   affiliationOptions: Affiliation[];
-
-  @Input("affiliations")
-  compAffiliations: Affiliation[];
 
   @Output()
   eventAddNewAffiliationToCompanion = new EventEmitter();
 
   formControlAffiliationSelect = new FormControl();
 
-  constructor(private affiliationService: AffiliationService) { 
+  constructor(private affiliationService: AffiliationService) {
   }
 
   ngOnInit() {
-    
-    this.getAffiliationOptions(); 
-        
-  }
-
-  updateAffiliationOptions(affiliation: Affiliation): void {
-
-    let indexOfAffiliation = this.affiliationOptions.indexOf(affiliation);
-
-    this.affiliationOptions.splice(indexOfAffiliation, 1);    
-
-  }
-
-  getAffiliationOptions(): void {
-
-    this.affiliationService.getAffiliations().subscribe( allAffiliations => {
-      
-      let bob = [];
-      
-      for(let i = 0; i != allAffiliations.length; i = i + 1) {
-
-        for(let k = 0; k != this.compAffiliations.length; k = k + 1) {
-
-          if( allAffiliations[i].id === this.compAffiliations[k].id ) {
-
-            bob.push(allAffiliations[i]);
-
-          }
-
-        }
-
-      }
-
-      this.affiliationOptions = allAffiliations;
-
-      for(let i = 0; i != bob.length ; i = i + 1) {
-
-        this.updateAffiliationOptions(bob[i]);
-
-      }
-
-    });
-
   }
 
   addAffiliationToCompanion(): void {
 
-    if( this.formControlAffiliationSelect.valid ) {
+    if (this.formControlAffiliationSelect.valid) {
 
       this.eventAddNewAffiliationToCompanion.emit(this.formControlAffiliationSelect.value);
-      
-      this.updateAffiliationOptions(this.formControlAffiliationSelect.value);
 
       this.formControlAffiliationSelect.reset();
 

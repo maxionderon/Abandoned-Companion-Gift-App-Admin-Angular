@@ -30,6 +30,7 @@ import { GiftReactionCreateComponent } from './components/gift-reaction-create/g
 import { GiftReactionElementComponent } from './components/gift-reaction-element/gift-reaction-element.component';
 import { CompanionCreateComponent } from './components/companion-create/companion-create.component';
 import { CompanionCreateAddAffiliationComponent } from './components/companion-create-add-affiliation/companion-create-add-affiliation.component';
+import { CompanionCreateAffiliationElementComponent } from './components/companion-create-affiliation-element/companion-create-affiliation-element.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CompanionCreateAddAffiliationComponent } from './components/companion-c
     GiftReactionCreateComponent,
     GiftReactionElementComponent,
     CompanionCreateComponent,
-    CompanionCreateAddAffiliationComponent
+    CompanionCreateAddAffiliationComponent,
+    CompanionCreateAffiliationElementComponent
   ],
   imports: [
     BrowserModule,
