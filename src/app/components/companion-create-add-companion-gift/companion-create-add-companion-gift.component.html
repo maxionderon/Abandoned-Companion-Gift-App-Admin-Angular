@@ -1,0 +1,19 @@
+<div style="display: flex; flex-wrap: nowrap; align-items: center">
+
+        <mat-form-field style="min-width: 30%; width: 100%; margin-right: 1%;">
+            <mat-select placeholder="Gift Type" [formControl]="formControlGiftType" required>
+                <mat-option *ngFor="let giftType of giftTypes" [value]="giftType">{{giftType.type}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field style="min-width: 30%; width: 100%;">
+            <mat-select placeholder="Gift Reaction" [formControl]="formControlGiftReaction" required>
+                <mat-option *ngFor="let giftReaction of giftReactions" [value]="giftReaction">{{giftReaction.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-icon-button aria-label="add Companion Gift button" (click)="addCompanionGiftToCompanion()">
+            <mat-icon>add_circle_outline</mat-icon>
+        </button>
+    
+    </div>

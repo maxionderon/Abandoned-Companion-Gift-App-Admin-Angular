@@ -8,25 +8,22 @@
     <mat-card-content>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Companion Name">
+            <input matInput placeholder="Companion Name" [formControl]="formControlCompanionName" required>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <textarea matInput placeholder="Companion Description"></textarea>
+            <textarea matInput placeholder="Companion Description" [formControl]="formControlCompanionDescription" required></textarea>
         </mat-form-field>
 
         <mat-list>
             <mat-list-item *ngFor="let affiliation of companionAffiliations" style="width: 100%">
-                <app-companion-create-affiliation-element 
-                    [affiliation]="affiliation" 
-                    (eventRemoveAffiliation)="removeAffiliationFromCompanion($event)"
-                    style="width: 100%">
+                <app-companion-create-affiliation-element [affiliation]="affiliation"
+                    (eventRemoveAffiliation)="removeAffiliationFromCompanion($event)" style="width: 100%">
                 </app-companion-create-affiliation-element>
             </mat-list-item>
             <mat-list-item *ngIf="affiliationOptions.length > 0" style="width: 100%">
                 <app-companion-create-add-affiliation [affiliationOptions]="affiliationOptions"
-                    (eventAddNewAffiliationToCompanion)="addAffiliationToCompanion($event)"
-                    style="width: 100%">
+                    (eventAddNewAffiliationToCompanion)="addAffiliationToCompanion($event)" style="width: 100%">
                 </app-companion-create-add-affiliation>
             </mat-list-item>
         </mat-list>
@@ -35,10 +32,17 @@
 
         <div *ngFor="let gift of companionGifts">{{gift.id}}</div>
 
+        <app-companion-create-add-companion-gift [giftTypes]="giftTypeOptions" [giftReactions]="giftReactionOptions"
+            (eventAddCompanionGiftToCompanion)="addCompanionGiftToCompanion($event)">
+        </app-companion-create-add-companion-gift>
+
     </mat-card-content>
 
     <mat-card-actions>
-
+        <button mat-stroked-button (click)="createCompanion()">
+            <mat-icon class="createIcon">add_circle_outline</mat-icon>
+            <span>Add Companion</span>
+        </button>
     </mat-card-actions>
 
 </mat-card>
