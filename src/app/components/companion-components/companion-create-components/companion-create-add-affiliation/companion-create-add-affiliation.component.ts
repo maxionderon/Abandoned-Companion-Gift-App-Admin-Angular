@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Affiliation } from 'src/app/model/affiliation';
-import { AffiliationService } from 'src/app/services/affiliation.service';
+import { AffiliationService } from 'src/app/services/affiliation-service/affiliation.service';
 import { FormControl } from '@angular/forms';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AffiliationService } from 'src/app/services/affiliation.service';
+import { AffiliationService } from 'src/app/services/affiliation-service/affiliation.service';
 import { Affiliation } from 'src/app/model/affiliation';
 import { FormControl } from '@angular/forms';
 

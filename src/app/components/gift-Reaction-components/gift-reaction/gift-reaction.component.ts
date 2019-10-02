@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GiftReaction } from 'src/app/model/gift-reaction';
-import { GiftReactionService } from 'src/app/services/gift-reaction.service';
+import { GiftReactionService } from 'src/app/services/gift-reaction-service/gift-reaction.service';
 
 @Component({
   selector: 'app-gift-reaction',

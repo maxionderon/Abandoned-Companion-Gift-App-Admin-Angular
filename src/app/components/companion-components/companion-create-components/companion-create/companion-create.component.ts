@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Affiliation } from 'src/app/model/affiliation';
 import { CompanionGift } from 'src/app/model/companion-gift';
-import { AffiliationService } from 'src/app/services/affiliation.service';
+import { AffiliationService } from 'src/app/services/affiliation-service/affiliation.service';
 import { GiftReaction } from 'src/app/model/gift-reaction';
 import { GiftType } from 'src/app/model/gift-type';
-import { GiftReactionService } from 'src/app/services/gift-reaction.service';
-import { GiftTypeService } from 'src/app/services/gift-type.service';
+import { GiftReactionService } from 'src/app/services/gift-reaction-service/gift-reaction.service';
+import { GiftTypeService } from 'src/app/services/gift-type-service/gift-type.service';
 import { Companion } from 'src/app/model/companion';
 import { FormControl } from '@angular/forms';
-import { CompanionService } from 'src/app/services/companion.service';
+import { CompanionService } from 'src/app/services/companion-service/companion.service';
 import { Router } from '@angular/router';
 
 @Component({

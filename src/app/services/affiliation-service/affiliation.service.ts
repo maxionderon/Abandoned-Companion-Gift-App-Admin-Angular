@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Affiliation } from '../model/affiliation';
+import { Affiliation } from '../../model/affiliation';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AffiliationService {
 
-  url = "http://localhost:8080/affiliation";
+  url = environment.baseURL + "/affiliation";
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

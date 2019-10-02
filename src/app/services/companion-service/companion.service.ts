@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Companion } from '../model/companion';
+import { Companion } from '../../model/companion';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanionService {
-  url = "http://localhost:8080/companion";
+  url = environment.baseURL + "/companion";
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

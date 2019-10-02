@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GiftType } from '../model/gift-type';
+import { GiftType } from '../../model/gift-type';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GiftTypeService {
 
-  url = "http://localhost:8080/giftType";
+  url =  environment.baseURL + "/giftType";
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

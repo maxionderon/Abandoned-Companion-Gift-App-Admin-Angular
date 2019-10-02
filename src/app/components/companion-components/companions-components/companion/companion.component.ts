@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanionService } from 'src/app/services/companion.service';
+import { CompanionService } from 'src/app/services/companion-service/companion.service';
 import { Companion } from 'src/app/model/companion';
 
 @Component({
