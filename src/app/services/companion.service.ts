@@ -26,5 +26,11 @@ export class CompanionService {
     return this.http.post<Companion[]>(this.url, companion, this.httpOptions);
 
   }
+
+  deleteCompanion(companion: Companion): Observable<Companion[]> {
+
+    return this.http.delete<Companion[]>(this.url + "/" + companion.id);
+
+  }
   
 }

@@ -29,4 +29,14 @@ export class CompanionComponent implements OnInit {
 
   }
 
+  deleteCompanion(companion: Companion): void {
+
+    this.companionService.deleteCompanion(companion). subscribe( companions => {
+
+      this.companions = companions;
+
+    });
+
+  }
+
 }

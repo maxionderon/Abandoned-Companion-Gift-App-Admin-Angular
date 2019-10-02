@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Companion } from 'src/app/model/companion';
 
 @Component({
@@ -11,9 +11,18 @@ export class CompanionDetailsComponent implements OnInit {
   @Input()
   companion: Companion;
 
+  @Output()
+  eventDeleteCompanion = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  deleteCompanion(): void {
+
+    this.eventDeleteCompanion.emit(this.companion);
+
+  }
+  
 }

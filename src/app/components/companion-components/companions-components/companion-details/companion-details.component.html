@@ -1,22 +1,47 @@
-<form style="width: 100%">
-    <mat-form-field style="width: 100%">
-      <input matInput placeholder="Name" value="{{companion.name}}" readonly >
-    </mat-form-field>
-  
-    <mat-form-field style="width: 100%">
-      <textarea matInput placeholder="Description" value="{{companion.description}}" readonly></textarea>
-    </mat-form-field>  
+<mat-card>
 
-  </form>
+  <mat-card-content>
 
-  <mat-list>
-    <h3 mat-subheader>Affiliations</h3>
+    <form style="width: 100%">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Name" value="{{companion.name}}" readonly>
+      </mat-form-field>
 
-    <mat-list-item *ngFor="let affiliation of companion.affiliations">
+      <mat-form-field style="width: 100%">
+        <textarea matInput placeholder="Description" value="{{companion.description}}" readonly></textarea>
+      </mat-form-field>
 
-      {{affiliation.name}}
-      
-    </mat-list-item>
+    </form>
 
-  </mat-list>
-  
+    <mat-list>
+      <h3 mat-subheader>Affiliations</h3>
+
+      <mat-list-item *ngFor="let affiliation of companion.affiliations">
+
+        {{affiliation.name}}
+
+      </mat-list-item>
+
+    </mat-list>
+
+    <mat-list>
+      <h4 mat-subheader>Companion Gifts</h4>
+
+      <mat-list-item *ngFor="let companionGift of companion.gifts">
+
+        {{companionGift.giftType.type}} {{companionGift.giftReaction.name}}
+
+      </mat-list-item>
+
+    </mat-list>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button (click)="deleteCompanion()">
+      <mat-icon class="icon">delete</mat-icon>
+      <span>Delete Companion</span>
+    </button>
+  </mat-card-actions>
+
+</mat-card>

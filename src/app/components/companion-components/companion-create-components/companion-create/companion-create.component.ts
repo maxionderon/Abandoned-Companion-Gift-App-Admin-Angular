@@ -9,6 +9,7 @@ import { GiftTypeService } from 'src/app/services/gift-type.service';
 import { Companion } from 'src/app/model/companion';
 import { FormControl } from '@angular/forms';
 import { CompanionService } from 'src/app/services/companion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-companion-create',
@@ -27,7 +28,7 @@ export class CompanionCreateComponent implements OnInit {
   formControlCompanionName = new FormControl();
   formControlCompanionDescription = new FormControl();
 
-  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService) { }
+  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private router: Router) { }
 
   ngOnInit() {
 
@@ -132,6 +133,8 @@ export class CompanionCreateComponent implements OnInit {
       this.companionGifts = [];
       this.formControlCompanionName.reset();
       this.formControlCompanionDescription.reset();
+
+      this.router.navigateByUrl("/companion");
 
     } else {
 

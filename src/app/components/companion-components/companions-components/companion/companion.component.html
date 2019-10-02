@@ -7,12 +7,19 @@
 
     <mat-card-content>
 
-        <mat-card *ngFor="let companion of companions">
-
-            <app-companion-details [companion]="companion" style="width: 100%"></app-companion-details>
-
-        </mat-card>
+        <app-companion-details *ngFor="let companion of companions" [companion]="companion"
+            (eventDeleteCompanion)="deleteCompanion($event)" style="width: 100%">
+        </app-companion-details>
 
     </mat-card-content>
+
+    <mat-card-actions>
+        <a routerLink="/companion/create">
+            <button mat-stroked-button (click)="true">
+                <mat-icon class="icon">add_circle_outline</mat-icon>
+                <span>Create New Companion</span>
+            </button>
+        </a>
+    </mat-card-actions>
 
 </mat-card>
