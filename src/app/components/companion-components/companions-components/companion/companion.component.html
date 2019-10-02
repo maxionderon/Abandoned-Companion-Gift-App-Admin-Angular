@@ -1,0 +1,18 @@
+<mat-card class="maxionderon-card-background" *ngIf="!createMode">
+
+    <mat-card-header>
+        <mat-card-title>Companion</mat-card-title>
+        <mat-card-subtitle>Current Companions</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <mat-card *ngFor="let companion of companions">
+
+            <app-companion-details [companion]="companion" style="width: 100%"></app-companion-details>
+
+        </mat-card>
+
+    </mat-card-content>
+
+</mat-card>

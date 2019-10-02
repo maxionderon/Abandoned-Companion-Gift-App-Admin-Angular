@@ -1,0 +1,22 @@
+<form style="width: 100%">
+    <mat-form-field style="width: 100%">
+      <input matInput placeholder="Name" value="{{companion.name}}" readonly >
+    </mat-form-field>
+  
+    <mat-form-field style="width: 100%">
+      <textarea matInput placeholder="Description" value="{{companion.description}}" readonly></textarea>
+    </mat-form-field>  
+
+  </form>
+
+  <mat-list>
+    <h3 mat-subheader>Affiliations</h3>
+
+    <mat-list-item *ngFor="let affiliation of companion.affiliations">
+
+      {{affiliation.name}}
+      
+    </mat-list-item>
+
+  </mat-list>
+  

@@ -28,11 +28,12 @@ import { GiftTypeElementComponent } from './components/gift-type-components/gift
 import { GiftReactionComponent } from './components/gift-Reaction-components/gift-reaction/gift-reaction.component';
 import { GiftReactionCreateComponent } from './components/gift-Reaction-components/gift-reaction-create/gift-reaction-create.component';
 import { GiftReactionElementComponent } from './components/gift-Reaction-components/gift-reaction-element/gift-reaction-element.component';
-import { CompanionCreateComponent } from './components/companion-components/companion-create/companion-create.component';
-import { CompanionCreateAddAffiliationComponent } from './components/companion-components/companion-create-add-affiliation/companion-create-add-affiliation.component';
-import { CompanionCreateAffiliationElementComponent } from './components/companion-components/companion-create-affiliation-element/companion-create-affiliation-element.component';
-import { CompanionCreateAddCompanionGiftComponent } from './components/companion-components/companion-create-add-companion-gift/companion-create-add-companion-gift.component';
-import { CompanionComponent } from './components/companion-components/companion/companion.component';
+import { CompanionCreateComponent } from './components/companion-components/companion-create-components/companion-create/companion-create.component';
+import { CompanionCreateAddAffiliationComponent } from './components/companion-components/companion-create-components/companion-create-add-affiliation/companion-create-add-affiliation.component';
+import { CompanionCreateAffiliationElementComponent } from './components/companion-components/companion-create-components/companion-create-affiliation-element/companion-create-affiliation-element.component';
+import { CompanionCreateAddCompanionGiftComponent } from './components/companion-components/companion-create-components/companion-create-add-companion-gift/companion-create-add-companion-gift.component';
+import { CompanionComponent } from './components/companion-components/companions-components/companion/companion.component';
+import { CompanionDetailsComponent } from './components/companion-components/companions-components/companion-details/companion-details.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { CompanionComponent } from './components/companion-components/companion/
     CompanionCreateAddAffiliationComponent,
     CompanionCreateAffiliationElementComponent,
     CompanionCreateAddCompanionGiftComponent,
-    CompanionComponent
+    CompanionComponent,
+    CompanionDetailsComponent
   ],
   imports: [
     BrowserModule,

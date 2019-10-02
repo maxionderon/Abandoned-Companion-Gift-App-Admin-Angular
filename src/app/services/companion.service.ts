@@ -15,6 +15,12 @@ export class CompanionService {
 
   constructor(private http: HttpClient) { }
 
+  getCompanions(): Observable<Companion[]> {
+
+    return this.http.get<Companion[]>(this.url, this.httpOptions);
+    
+  }
+
   postCompanion(companion: Companion): Observable<Companion[]> {
 
     return this.http.post<Companion[]>(this.url, companion, this.httpOptions);
