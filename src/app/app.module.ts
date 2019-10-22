@@ -35,6 +35,7 @@ import { CompanionCreateAddCompanionGiftComponent } from './components/companion
 import { CompanionComponent } from './components/companion-components/companions-components/companion/companion.component';
 import { CompanionDetailsComponent } from './components/companion-components/companions-components/companion-details/companion-details.component';
 import { HomeComponent } from './components/home/home.component';
+import { CompanionCreateCompanionGiftElementComponent } from './components/companion-components/companion-create-components/companion-create-companion-gift-element/companion-create-companion-gift-element.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { HomeComponent } from './components/home/home.component';
     CompanionCreateAddCompanionGiftComponent,
     CompanionComponent,
     CompanionDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    CompanionCreateCompanionGiftElementComponent
   ],
   imports: [
     BrowserModule,

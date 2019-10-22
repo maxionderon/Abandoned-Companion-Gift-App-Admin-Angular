@@ -12,10 +12,16 @@
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <textarea matInput placeholder="Companion Description" [formControl]="formControlCompanionDescription" required></textarea>
+            <textarea matInput placeholder="Companion Description" [formControl]="formControlCompanionDescription"
+                required></textarea>
         </mat-form-field>
 
+
+
         <mat-list>
+
+            <h3 mat-subheader>Affiliations</h3>
+
             <mat-list-item *ngFor="let affiliation of companionAffiliations" style="width: 100%">
                 <app-companion-create-affiliation-element [affiliation]="affiliation"
                     (eventRemoveAffiliation)="removeAffiliationFromCompanion($event)" style="width: 100%">
@@ -29,12 +35,26 @@
         </mat-list>
 
 
+        <mat-list>
 
-        <div *ngFor="let gift of companionGifts">{{gift.id}}</div>
+            <h3 mat-subheader>Companion Gifts</h3>
 
-        <app-companion-create-add-companion-gift [giftTypes]="giftTypeOptions" [giftReactions]="giftReactionOptions"
-            (eventAddCompanionGiftToCompanion)="addCompanionGiftToCompanion($event)">
-        </app-companion-create-add-companion-gift>
+            <mat-list-item *ngFor="let gift of companionGifts" style="width: 100%">
+                <app-companion-create-companion-gift-element [companionGift]="gift" style="width: 100%">
+                </app-companion-create-companion-gift-element>
+            </mat-list-item>
+            <mat-list-item>
+                <app-companion-create-add-companion-gift [giftTypes]="giftTypeOptions"
+                    [giftReactions]="giftReactionOptions"
+                    (eventAddCompanionGiftToCompanion)="addCompanionGiftToCompanion($event)" style="width: 100%">
+                </app-companion-create-add-companion-gift>
+            </mat-list-item>
+        </mat-list>
+
+
+
+
+
 
     </mat-card-content>
 
