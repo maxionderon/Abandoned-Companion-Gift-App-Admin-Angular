@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list'; 
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
@@ -75,7 +76,8 @@ import { CompanionCreateCompanionGiftElementComponent } from './components/compa
     MatIconModule,
     MatListModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule
     
   ],
   providers: [],

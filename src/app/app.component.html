@@ -1,6 +1,29 @@
-<div style="margin-left: 10%; margin-right: 10%">
+<div fxLayout="column" fxFill>
 
-        <router-outlet></router-outlet>
+        <mat-toolbar color="primary">
+                <mat-toolbar-row>
+                        <a routerLink="/">
+                                <span>Companion Gift App - Admin</span>
+                        </a>
+                </mat-toolbar-row>
+        </mat-toolbar>
+
+        <div fxLayout="column" fxFlex>
+
+                <div style="margin-left: 10%; margin-right: 10%; margin-top: 1%; margin-bottom: 1%;">
+
+                        <router-outlet></router-outlet>
+
+                </div>
+
+
+
+        </div>
+
+        <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="center center">
+
+                <a href="https://maxionderon.github.io"><span>© Maximilian Meyer</span></a>
+
+        </mat-toolbar>
 
 </div>
-
