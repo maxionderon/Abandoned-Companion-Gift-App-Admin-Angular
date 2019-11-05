@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AffiliationService } from 'src/app/services/affiliation-service/affiliation.service';
 import { Affiliation } from 'src/app/model/affiliation';
-import { FormControl } from '@angular/forms';
+
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+
+import { AffiliationCreateDialogComponent } from '../affiliation-create-dialog/affiliation-create-dialog.component';
+import { AffiliationCreateComponent } from '../affiliation-create/affiliation-create.component';
 
 @Component({
   selector: 'app-affiliation',
@@ -14,7 +18,7 @@ export class AffiliationComponent implements OnInit {
 
   createMode: boolean = false;
 
-  constructor(private affiliationService: AffiliationService) { }
+  constructor(private affiliationService: AffiliationService, private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -71,6 +75,26 @@ export class AffiliationComponent implements OnInit {
   showAffiliationAndHideCreate(): void {
 
     this.createMode = false;
+
+  }
+
+  dialogCreateAffiliation(): void {
+
+    const dialogConfigCreateAffiliation = new MatDialogConfig();
+
+    dialogConfigCreateAffiliation.width = "90%";
+  
+    const dialogRef = this.dialog.open(AffiliationCreateDialogComponent, dialogConfigCreateAffiliation);
+
+    dialogRef.afterClosed().subscribe(affiliation => {
+    
+      if( affiliation instanceof Affiliation) {
+
+        this.createAffiliation(affiliation);
+
+      }    
+    
+    });
 
   }
 

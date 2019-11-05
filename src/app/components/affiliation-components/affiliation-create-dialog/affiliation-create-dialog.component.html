@@ -1,0 +1,24 @@
+<h2 mat-dialog-title> Create New Affiliation</h2>
+
+<mat-dialog-content>
+    <mat-form-field floatLabel="always" style="width: 100%">
+        <mat-label>Name of the Affiliation</mat-label>
+        <input #inputNewAffiliation matInput placeholder="Name the new Affiliation" required
+            [formControl]="affiliationName">
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-stroked-button (click)="abortAffiliationCreation()">
+        <mat-icon class="createIcon">clear</mat-icon>
+        <span>Abort Creation</span>
+    </button>
+
+    <button mat-stroked-button (click)="createAffiliation()">
+        <mat-icon class="createIcon">add_circle_outline</mat-icon>
+        <span>Create Affiliation</span>
+    </button>
+
+</mat-dialog-actions>

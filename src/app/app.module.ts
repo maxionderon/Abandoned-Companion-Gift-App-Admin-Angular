@@ -19,6 +19,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
@@ -37,6 +38,7 @@ import { CompanionComponent } from './components/companion-components/companions
 import { CompanionDetailsComponent } from './components/companion-components/companions-components/companion-details/companion-details.component';
 import { HomeComponent } from './components/home/home.component';
 import { CompanionCreateCompanionGiftElementComponent } from './components/companion-components/companion-create-components/companion-create-companion-gift-element/companion-create-companion-gift-element.component';
+import { AffiliationCreateDialogComponent } from './components/affiliation-components/affiliation-create-dialog/affiliation-create-dialog.component';
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { CompanionCreateCompanionGiftElementComponent } from './components/compa
     CompanionComponent,
     CompanionDetailsComponent,
     HomeComponent,
-    CompanionCreateCompanionGiftElementComponent
+    CompanionCreateCompanionGiftElementComponent,
+    AffiliationCreateDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -77,10 +80,14 @@ import { CompanionCreateCompanionGiftElementComponent } from './components/compa
     MatListModule,
     MatTooltipModule,
     MatSelectModule,
-    MatToolbarModule
-    
+    MatToolbarModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AffiliationCreateDialogComponent,
+    AffiliationCreateComponent
+  ]
 })
 export class AppModule { }
