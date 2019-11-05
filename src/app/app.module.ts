@@ -39,6 +39,7 @@ import { CompanionDetailsComponent } from './components/companion-components/com
 import { HomeComponent } from './components/home/home.component';
 import { CompanionCreateCompanionGiftElementComponent } from './components/companion-components/companion-create-components/companion-create-companion-gift-element/companion-create-companion-gift-element.component';
 import { AffiliationCreateDialogComponent } from './components/affiliation-components/affiliation-create-dialog/affiliation-create-dialog.component';
+import { AffiliationDeleteDialogComponent } from './components/affiliation-components/affiliation-delete-dialog/affiliation-delete-dialog.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { AffiliationCreateDialogComponent } from './components/affiliation-compo
     CompanionDetailsComponent,
     HomeComponent,
     CompanionCreateCompanionGiftElementComponent,
-    AffiliationCreateDialogComponent
+    AffiliationCreateDialogComponent,
+    AffiliationDeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,7 @@ import { AffiliationCreateDialogComponent } from './components/affiliation-compo
   bootstrap: [AppComponent],
   entryComponents: [
     AffiliationCreateDialogComponent,
-    AffiliationCreateComponent
+    AffiliationDeleteDialogComponent
   ]
 })
 export class AppModule { }

@@ -18,7 +18,7 @@ export class AffiliationComponent implements OnInit {
 
   createMode: boolean = false;
 
-  constructor(private affiliationService: AffiliationService, private dialog: MatDialog) { }
+  constructor(private affiliationService: AffiliationService, private affiliationCreateDialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -84,7 +84,7 @@ export class AffiliationComponent implements OnInit {
 
     dialogConfigCreateAffiliation.width = "90%";
   
-    const dialogRef = this.dialog.open(AffiliationCreateDialogComponent, dialogConfigCreateAffiliation);
+    const dialogRef = this.affiliationCreateDialog.open(AffiliationCreateDialogComponent, dialogConfigCreateAffiliation);
 
     dialogRef.afterClosed().subscribe(affiliation => {
     

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, EventEmitter, Output } from '@angular/core';
 import { Affiliation } from 'src/app/model/affiliation';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { AffiliationDeleteDialogComponent } from '../affiliation-delete-dialog/affiliation-delete-dialog.component';
 
 @Component({
   selector: 'app-affiliation-element',
@@ -24,7 +26,7 @@ export class AffiliationElementComponent implements OnInit {
   defaultOptionsDisabled: boolean = false;
   showModOptions: boolean = false;
 
-  constructor() { }
+  constructor(private affiliationDeleteDialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -63,6 +65,26 @@ export class AffiliationElementComponent implements OnInit {
   deleteAffiliation(): void {
 
     this.eventDeleteAffiliation.emit(this.affiliation);
+
+  }
+
+  dialogDeleteAffiliation(): void {
+
+    const dialogConfigDeleteAffiliation = new MatDialogConfig();
+
+    dialogConfigDeleteAffiliation.data = this.affiliation;
+
+    const dialogRef = this.affiliationDeleteDialog.open(AffiliationDeleteDialogComponent, dialogConfigDeleteAffiliation);
+
+    dialogRef.afterClosed().subscribe( deleteFlag => {
+
+      if( deleteFlag === true ) {
+
+        this.deleteAffiliation();
+
+      }
+
+    });
 
   }
   
