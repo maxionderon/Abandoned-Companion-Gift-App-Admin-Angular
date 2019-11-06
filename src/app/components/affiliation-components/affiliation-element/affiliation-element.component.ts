@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ElementRef, ViewChild, EventEmitter, Output }
 import { Affiliation } from 'src/app/model/affiliation';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { AffiliationDeleteDialogComponent } from '../affiliation-delete-dialog/affiliation-delete-dialog.component';
+import { AffiliationModificationDialogComponent } from '../affiliation-modification-dialog/affiliation-modification-dialog.component';
 
 @Component({
   selector: 'app-affiliation-element',
@@ -19,52 +20,42 @@ export class AffiliationElementComponent implements OnInit {
   @Output()
   eventUpdateAffiliation = new EventEmitter();
 
-  @ViewChild('inputAffiliationName', {static: false})
-  inputAffiliationName: ElementRef;
-
-  readonly: boolean = true;
-  defaultOptionsDisabled: boolean = false;
-  showModOptions: boolean = false;
-
-  constructor(private affiliationDeleteDialog: MatDialog) { }
+  constructor(private affiliationDeleteDialog: MatDialog, private affiliationModifyDialog: MatDialog) { }
 
   ngOnInit() {
   }
-
   
-  editModeAffiliation(): void {
+  updateAffiliation(affiliation: Affiliation): void {
 
-    this.readonly = false;
-    this.defaultOptionsDisabled = true;
-    this.showModOptions = true;
+    this.affiliation.name = affiliation.name;
 
-    this.inputAffiliationName.nativeElement.select();
-
-  }
-
-  abortModeAffiliation(): void {
-
-    this.readonly = true;
-    this.defaultOptionsDisabled = false;
-    this.showModOptions = false;
-
-  }
-
-  updateAffiliation(): void {
-
-    this.readonly = true;
-    this.defaultOptionsDisabled = false;
-    this.showModOptions = false;
-
-    this.affiliation.name = this.inputAffiliationName.nativeElement.value;
-
-    this.eventUpdateAffiliation.emit(this.affiliation );
+    this.eventUpdateAffiliation.emit(this.affiliation);
 
   }
 
   deleteAffiliation(): void {
 
     this.eventDeleteAffiliation.emit(this.affiliation);
+
+  }
+
+  dialogModifyAffiliation(): void {
+
+    const dialogConfigModifyAffiliation = new MatDialogConfig();
+
+    dialogConfigModifyAffiliation.data = this.affiliation;
+
+    const dialogRef = this.affiliationModifyDialog.open(AffiliationModificationDialogComponent, dialogConfigModifyAffiliation);
+
+    dialogRef.afterClosed().subscribe( affiliation => {
+
+      if( affiliation !== undefined ) {
+
+        this.updateAffiliation(affiliation);
+
+      }
+
+    });
 
   }
 
@@ -88,5 +79,4 @@ export class AffiliationElementComponent implements OnInit {
 
   }
   
-
 }

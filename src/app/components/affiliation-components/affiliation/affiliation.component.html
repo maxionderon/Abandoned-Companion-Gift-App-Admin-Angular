@@ -1,4 +1,4 @@
-<mat-card class="maxionderon-card-background" *ngIf="!createMode">
+<mat-card class="maxionderon-card-background">
 
     <mat-card-header>
         <mat-card-title>Affiliation</mat-card-title>
@@ -16,8 +16,7 @@
 
                     <app-affiliation-element [affiliation]="affiliation"
                         (eventDeleteAffiliation)="deleteAffiliation($event)"
-                        (eventUpdateAffiliation)="updateAffiliation($event)" 
-                        style="width: 100%">
+                        (eventUpdateAffiliation)="updateAffiliation($event)" style="width: 100%">
                     </app-affiliation-element>
 
                 </mat-list-item>
@@ -29,23 +28,12 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-stroked-button  (click)="hideAffiliationsAndShowCreate()">
+        <button mat-stroked-button (click)="dialogCreateAffiliation()">
             <mat-icon class="createIcon">add_circle_outline</mat-icon>
             <span>Create New Affiliation</span>
         </button>
-
-        <button mat-stroked-button  (click)="dialogCreateAffiliation()">
-                <mat-icon class="createIcon">add_circle_outline</mat-icon>
-                <span>Create New Affiliation Dialog</span>
-            </button>
 
 
     </mat-card-actions>
 
 </mat-card>
-
-<app-affiliation-create *ngIf="createMode"
-    (eventAbortCreation)="showAffiliationAndHideCreate()"
-    (eventCreateAffiliation)="showAffiliationAndHideCreate(); createAffiliation($event)"    
->
-</app-affiliation-create>

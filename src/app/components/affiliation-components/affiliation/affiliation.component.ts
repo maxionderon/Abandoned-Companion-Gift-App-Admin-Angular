@@ -65,19 +65,7 @@ export class AffiliationComponent implements OnInit {
     });
     
   }
-
-  hideAffiliationsAndShowCreate(): void {
-
-    this.createMode = true;
-
-  }
-
-  showAffiliationAndHideCreate(): void {
-
-    this.createMode = false;
-
-  }
-
+  
   dialogCreateAffiliation(): void {
 
     const dialogConfigCreateAffiliation = new MatDialogConfig();

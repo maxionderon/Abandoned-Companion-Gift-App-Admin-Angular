@@ -12,7 +12,7 @@ export class AffiliationDeleteDialogComponent implements OnInit {
   affiliation: Affiliation;
 
   constructor(private affiliationDeleteDialogRef: MatDialogRef<AffiliationDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) affiliation ) { 
+    @Inject(MAT_DIALOG_DATA) affiliation: Affiliation ) { 
 
       this.affiliation = affiliation;
 
