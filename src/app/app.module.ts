@@ -26,7 +26,6 @@ import { AffiliationElementComponent } from './components/affiliation-components
 import { GiftTypeComponent } from './components/gift-type-components/gift-type/gift-type.component';
 import { GiftTypeElementComponent } from './components/gift-type-components/gift-type-element/gift-type-element.component';
 import { GiftReactionComponent } from './components/gift-Reaction-components/gift-reaction/gift-reaction.component';
-import { GiftReactionCreateComponent } from './components/gift-Reaction-components/gift-reaction-create/gift-reaction-create.component';
 import { GiftReactionElementComponent } from './components/gift-Reaction-components/gift-reaction-element/gift-reaction-element.component';
 import { CompanionCreateComponent } from './components/companion-components/companion-create-components/companion-create/companion-create.component';
 import { CompanionCreateAddAffiliationComponent } from './components/companion-components/companion-create-components/companion-create-add-affiliation/companion-create-add-affiliation.component';
@@ -44,6 +43,7 @@ import { GiftTypeDeleteDialogComponent } from './components/gift-type-components
 import { GiftTypeModificationDialogComponent } from './components/gift-type-components/gift-type-modification-dialog/gift-type-modification-dialog.component';
 import { GiftReactionCreateDialogComponent } from './components/gift-Reaction-components/gift-reaction-create-dialog/gift-reaction-create-dialog.component';
 import { GiftReactionDeleteDialogComponent } from './components/gift-Reaction-components/gift-reaction-delete-dialog/gift-reaction-delete-dialog.component';
+import { GiftReactionModificationDialogComponent } from './components/gift-Reaction-components/gift-reaction-modification-dialog/gift-reaction-modification-dialog.component';
 
 
 @NgModule({
@@ -54,7 +54,6 @@ import { GiftReactionDeleteDialogComponent } from './components/gift-Reaction-co
     GiftTypeComponent,
     GiftTypeElementComponent,
     GiftReactionComponent,
-    GiftReactionCreateComponent,
     GiftReactionElementComponent,
     CompanionCreateComponent,
     CompanionCreateAddAffiliationComponent,
@@ -71,7 +70,8 @@ import { GiftReactionDeleteDialogComponent } from './components/gift-Reaction-co
     GiftTypeDeleteDialogComponent,
     GiftTypeModificationDialogComponent,
     GiftReactionCreateDialogComponent,
-    GiftReactionDeleteDialogComponent
+    GiftReactionDeleteDialogComponent,
+    GiftReactionModificationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +103,8 @@ import { GiftReactionDeleteDialogComponent } from './components/gift-Reaction-co
     GiftTypeDeleteDialogComponent,
     GiftTypeModificationDialogComponent,
     GiftReactionCreateDialogComponent,
-    GiftReactionDeleteDialogComponent
+    GiftReactionDeleteDialogComponent,
+    GiftReactionModificationDialogComponent
   ]
 })
 export class AppModule { }
