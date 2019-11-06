@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { GiftType } from 'src/app/model/gift-type';
-import { FormControl } from '@angular/forms';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { GiftTypeDeleteDialogComponent } from '../gift-type-delete-dialog/gift-type-delete-dialog.component';
+import { environment } from 'src/environments/environment';
+import { GiftTypeModificationDialogComponent } from '../gift-type-modification-dialog/gift-type-modification-dialog.component';
 
 @Component({
   selector: 'app-gift-type-element',
@@ -20,46 +21,14 @@ export class GiftTypeElementComponent implements OnInit {
   @Output()
   eventUpdateGiftType = new EventEmitter();
 
-  @ViewChild("inputGiftTypeName", {static: false})
-  inputGiftTypeName: ElementRef;
-
-  formControlGiftTypeName = new FormControl();
-
-  readonly: boolean = true;
-  defaultOptionsDisabled: boolean = false;
-  showModOptions: boolean = false;
-
-
-  constructor(private giftTypeDeleteDialog: MatDialog) { }
+  constructor(private giftTypeDeleteDialog: MatDialog, private giftTypeModificationDialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  editModeGiftType(): void {
+  updateGiftType(giftType: GiftType) {
 
-    this.readonly = false;
-    this.defaultOptionsDisabled = true;
-    this.showModOptions = true;
-
-    this.inputGiftTypeName.nativeElement.select();
-
-  }
-
-  abortModeGiftType(): void {
-
-    this.readonly = true;
-    this.defaultOptionsDisabled = false;
-    this.showModOptions = false;
-
-  }
-
-  updateGiftType(): void {
-
-    this.readonly = true;
-    this.defaultOptionsDisabled = false;
-    this.showModOptions = false;
-
-    this.giftType.type = this.inputGiftTypeName.nativeElement.value;
+    this.giftType.type = giftType.type;
 
     this.eventUpdateGiftType.emit(this.giftType);
 
@@ -71,11 +40,32 @@ export class GiftTypeElementComponent implements OnInit {
     
   }
 
+  dialogModifyGiftType(): void {
+
+    const dialogConfigModifyGiftType = new MatDialogConfig();
+
+    dialogConfigModifyGiftType.width = environment.dialogWidth;
+    dialogConfigModifyGiftType.data = this.giftType;
+
+    const dialogRef = this.giftTypeModificationDialog.open(GiftTypeModificationDialogComponent, dialogConfigModifyGiftType);
+    
+    dialogRef.afterClosed().subscribe( giftType => {
+
+      if( giftType !== undefined ) {
+
+        this.updateGiftType(giftType);
+
+      }
+
+    });
+
+  }
+
   dialogDeleteGiftType(): void {
 
     const dialogConfigDeleteGiftType = new MatDialogConfig();
 
-    dialogConfigDeleteGiftType.width = "90%";
+    dialogConfigDeleteGiftType.width = environment.dialogWidth;
     dialogConfigDeleteGiftType.data = this.giftType;
 
     const dialogRef = this.giftTypeDeleteDialog.open(GiftTypeDeleteDialogComponent, dialogConfigDeleteGiftType);

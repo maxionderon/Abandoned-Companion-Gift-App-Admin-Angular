@@ -1,0 +1,27 @@
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Gift Type Modification" (click)="abortGiftTypeModification()">clear</mat-icon>
+<h2 mat-dialog-title> Modify Gift Type: {{giftType.type}}</h2>
+
+
+<mat-dialog-content>
+    <mat-form-field floatLabel="always" style="width: 100%" appearance="outline">
+        <mat-label>Rename the Gift Type</mat-label>
+        <input matInput placeholder="Rename the Gift Type" [value]="giftType.type" required
+            [formControl]="giftTypeTypeFormControl">
+    </mat-form-field>
+    <mat-error *ngIf="giftTypeTypeFormControl.invalid">{{getErrorMessage()}}</mat-error>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-stroked-button (click)="abortGiftTypeModification()">
+        <mat-icon class="createIcon">clear</mat-icon>
+        <span>Abort Gift Type</span>
+    </button>
+
+    <button mat-stroked-button (click)="modifyGiftType()">
+        <mat-icon class="createIcon">add_circle_outline</mat-icon>
+        <span>Update Gift Type</span>
+    </button>
+
+</mat-dialog-actions>

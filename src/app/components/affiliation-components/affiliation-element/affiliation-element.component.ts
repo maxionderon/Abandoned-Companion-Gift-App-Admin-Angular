@@ -3,6 +3,7 @@ import { Affiliation } from 'src/app/model/affiliation';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { AffiliationDeleteDialogComponent } from '../affiliation-delete-dialog/affiliation-delete-dialog.component';
 import { AffiliationModificationDialogComponent } from '../affiliation-modification-dialog/affiliation-modification-dialog.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-affiliation-element',
@@ -43,7 +44,7 @@ export class AffiliationElementComponent implements OnInit {
 
     const dialogConfigModifyAffiliation = new MatDialogConfig();
 
-    dialogConfigModifyAffiliation.width = "50%";
+    dialogConfigModifyAffiliation.width = environment.dialogWidth;
     dialogConfigModifyAffiliation.data = this.affiliation;
 
     const dialogRef = this.affiliationModifyDialog.open(AffiliationModificationDialogComponent, dialogConfigModifyAffiliation);
@@ -64,7 +65,7 @@ export class AffiliationElementComponent implements OnInit {
 
     const dialogConfigDeleteAffiliation = new MatDialogConfig();
 
-    dialogConfigDeleteAffiliation.width = "50%";
+    dialogConfigDeleteAffiliation.width = environment.dialogWidth;
     dialogConfigDeleteAffiliation.data = this.affiliation;
 
     const dialogRef = this.affiliationDeleteDialog.open(AffiliationDeleteDialogComponent, dialogConfigDeleteAffiliation);

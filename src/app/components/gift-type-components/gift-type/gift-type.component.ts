@@ -3,6 +3,7 @@ import { GiftTypeService } from 'src/app/services/gift-type-service/gift-type.se
 import { GiftType } from 'src/app/model/gift-type';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { GiftTypeCreateDialogComponent } from '../gift-type-create-dialog/gift-type-create-dialog.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-gift-type',
@@ -12,8 +13,6 @@ import { GiftTypeCreateDialogComponent } from '../gift-type-create-dialog/gift-t
 export class GiftTypeComponent implements OnInit {
 
   giftTypes: GiftType[];
-
-  createMode: boolean = false;
 
   constructor(private giftTypeService: GiftTypeService,
     private giftTypeCreateCatalog: MatDialog) { }
@@ -64,23 +63,11 @@ export class GiftTypeComponent implements OnInit {
 
   }
 
-  hideGiftTypesAndShowCreate(): void {
-
-    this.createMode = true;
-
-  }
-
-  showGiftTypesAndHideCreate(): void {
-
-    this.createMode = false;
-
-  }
-
   dialogCreateGiftTypes(): void {
 
     const dialogConfigCreateGiftType = new MatDialogConfig();
 
-    dialogConfigCreateGiftType.width = "50%";
+    dialogConfigCreateGiftType.width = environment.dialogWidth;
 
     const dialogRef = this.giftTypeCreateCatalog.open(GiftTypeCreateDialogComponent, dialogConfigCreateGiftType);
 

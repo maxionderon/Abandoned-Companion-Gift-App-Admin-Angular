@@ -24,7 +24,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
 import { GiftTypeComponent } from './components/gift-type-components/gift-type/gift-type.component';
-import { GiftTypeCreateComponent } from './components/gift-type-components/gift-type-create/gift-type-create.component';
 import { GiftTypeElementComponent } from './components/gift-type-components/gift-type-element/gift-type-element.component';
 import { GiftReactionComponent } from './components/gift-Reaction-components/gift-reaction/gift-reaction.component';
 import { GiftReactionCreateComponent } from './components/gift-Reaction-components/gift-reaction-create/gift-reaction-create.component';
@@ -42,6 +41,7 @@ import { AffiliationDeleteDialogComponent } from './components/affiliation-compo
 import { AffiliationModificationDialogComponent } from './components/affiliation-components/affiliation-modification-dialog/affiliation-modification-dialog.component';
 import { GiftTypeCreateDialogComponent } from './components/gift-type-components/gift-type-create-dialog/gift-type-create-dialog.component';
 import { GiftTypeDeleteDialogComponent } from './components/gift-type-components/gift-type-delete-dialog/gift-type-delete-dialog.component';
+import { GiftTypeModificationDialogComponent } from './components/gift-type-components/gift-type-modification-dialog/gift-type-modification-dialog.component';
 
 
 @NgModule({
@@ -50,7 +50,6 @@ import { GiftTypeDeleteDialogComponent } from './components/gift-type-components
     AffiliationComponent,
     AffiliationElementComponent,
     GiftTypeComponent,
-    GiftTypeCreateComponent,
     GiftTypeElementComponent,
     GiftReactionComponent,
     GiftReactionCreateComponent,
@@ -67,7 +66,8 @@ import { GiftTypeDeleteDialogComponent } from './components/gift-type-components
     AffiliationDeleteDialogComponent,
     AffiliationModificationDialogComponent,
     GiftTypeCreateDialogComponent,
-    GiftTypeDeleteDialogComponent
+    GiftTypeDeleteDialogComponent,
+    GiftTypeModificationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +96,8 @@ import { GiftTypeDeleteDialogComponent } from './components/gift-type-components
     AffiliationDeleteDialogComponent,
     AffiliationModificationDialogComponent,
     GiftTypeCreateDialogComponent,
-    GiftTypeDeleteDialogComponent
+    GiftTypeDeleteDialogComponent,
+    GiftTypeModificationDialogComponent
   ]
 })
 export class AppModule { }

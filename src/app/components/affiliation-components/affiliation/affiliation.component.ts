@@ -5,6 +5,7 @@ import { Affiliation } from 'src/app/model/affiliation';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 
 import { AffiliationCreateDialogComponent } from '../affiliation-create-dialog/affiliation-create-dialog.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-affiliation',
@@ -69,7 +70,7 @@ export class AffiliationComponent implements OnInit {
 
     const dialogConfigCreateAffiliation = new MatDialogConfig();
 
-    dialogConfigCreateAffiliation.width = "50%";
+    dialogConfigCreateAffiliation.width = environment.dialogWidth;
   
     const dialogRef = this.affiliationCreateDialog.open(AffiliationCreateDialogComponent, dialogConfigCreateAffiliation);
 
