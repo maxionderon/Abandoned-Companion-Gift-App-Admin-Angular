@@ -15,7 +15,7 @@ export class GiftTypeComponent implements OnInit {
   giftTypes: GiftType[];
 
   constructor(private giftTypeService: GiftTypeService,
-    private giftTypeCreateCatalog: MatDialog) { }
+    private giftTypeCreateDialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -69,7 +69,7 @@ export class GiftTypeComponent implements OnInit {
 
     dialogConfigCreateGiftType.width = environment.dialogWidth;
 
-    const dialogRef = this.giftTypeCreateCatalog.open(GiftTypeCreateDialogComponent, dialogConfigCreateGiftType);
+    const dialogRef = this.giftTypeCreateDialog.open(GiftTypeCreateDialogComponent, dialogConfigCreateGiftType);
 
     dialogRef.afterClosed().subscribe( giftType => {
 

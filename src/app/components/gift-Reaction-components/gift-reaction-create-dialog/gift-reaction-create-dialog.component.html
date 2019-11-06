@@ -1,0 +1,33 @@
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Gift Reaction Creation" (click)="abortGiftReactionCreation()">clear
+</mat-icon>
+
+<h2 mat-dialog-title> Create New Gift Reaction</h2>
+
+<mat-dialog-content>
+    <mat-form-field floatLabel="always" style="width: 100%" appearance="outline">
+        <mat-label>Name the Gift Reaction</mat-label>
+        <input matInput placeholder="Name the new Gift Type" required [formControl]="giftReactionNameFormControl">
+        <mat-error *ngIf="giftReactionNameFormControl.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" style="width: 100%" appearance="outline">
+        <mat-label>Set the Gift Reaction Gain Factor</mat-label>
+        <input matInput placeholder="Set the Gift Reaction Gain Factor" required
+            [formControl]="giftReactionGainFactorFormControl" type="number" min="0">
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-stroked-button (click)="abortGiftReactionCreation()">
+        <mat-icon class="createIcon">clear</mat-icon>
+        <span>Abort Creation</span>
+    </button>
+
+    <button mat-stroked-button (click)="createGiftReaction()">
+        <mat-icon class="createIcon">add_circle_outline</mat-icon>
+        <span>Create Gift Reaction</span>
+    </button>
+
+</mat-dialog-actions>

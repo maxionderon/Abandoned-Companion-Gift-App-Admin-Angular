@@ -42,6 +42,7 @@ import { AffiliationModificationDialogComponent } from './components/affiliation
 import { GiftTypeCreateDialogComponent } from './components/gift-type-components/gift-type-create-dialog/gift-type-create-dialog.component';
 import { GiftTypeDeleteDialogComponent } from './components/gift-type-components/gift-type-delete-dialog/gift-type-delete-dialog.component';
 import { GiftTypeModificationDialogComponent } from './components/gift-type-components/gift-type-modification-dialog/gift-type-modification-dialog.component';
+import { GiftReactionCreateDialogComponent } from './components/gift-Reaction-components/gift-reaction-create-dialog/gift-reaction-create-dialog.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { GiftTypeModificationDialogComponent } from './components/gift-type-comp
     AffiliationModificationDialogComponent,
     GiftTypeCreateDialogComponent,
     GiftTypeDeleteDialogComponent,
-    GiftTypeModificationDialogComponent
+    GiftTypeModificationDialogComponent,
+    GiftReactionCreateDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,8 @@ import { GiftTypeModificationDialogComponent } from './components/gift-type-comp
     AffiliationModificationDialogComponent,
     GiftTypeCreateDialogComponent,
     GiftTypeDeleteDialogComponent,
-    GiftTypeModificationDialogComponent
+    GiftTypeModificationDialogComponent,
+    GiftReactionCreateDialogComponent
   ]
 })
 export class AppModule { }
