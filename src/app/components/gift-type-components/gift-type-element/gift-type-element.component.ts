@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { GiftType } from 'src/app/model/gift-type';
 import { FormControl } from '@angular/forms';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { GiftTypeDeleteDialogComponent } from '../gift-type-delete-dialog/gift-type-delete-dialog.component';
 
 @Component({
   selector: 'app-gift-type-element',
@@ -28,7 +30,7 @@ export class GiftTypeElementComponent implements OnInit {
   showModOptions: boolean = false;
 
 
-  constructor() { }
+  constructor(private giftTypeDeleteDialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -67,6 +69,27 @@ export class GiftTypeElementComponent implements OnInit {
 
     this.eventDeleteGiftType.emit(this.giftType);
     
+  }
+
+  dialogDeleteGiftType(): void {
+
+    const dialogConfigDeleteGiftType = new MatDialogConfig();
+
+    dialogConfigDeleteGiftType.width = "90%";
+    dialogConfigDeleteGiftType.data = this.giftType;
+
+    const dialogRef = this.giftTypeDeleteDialog.open(GiftTypeDeleteDialogComponent, dialogConfigDeleteGiftType);
+
+    dialogRef.afterClosed().subscribe( deleteFlag => {
+
+      if( deleteFlag === true ) {
+
+        this.deleteGiftType();
+
+      }
+
+    }); 
+
   }
 
 }

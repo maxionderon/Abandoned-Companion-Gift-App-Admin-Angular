@@ -14,13 +14,13 @@
         <mat-icon>cancel</mat-icon>
     </button>
 
-    <button mat-icon-button aria-label="modify button icon" matTooltip="Modify Affiliation" (click)="editModeGiftType()"
+    <button mat-icon-button aria-label="modify button icon" matTooltip="Modify Gift Type" (click)="editModeGiftType()"
         [disabled]="defaultOptionsDisabled">
         <mat-icon>create</mat-icon>
     </button>
 
-    <button class="deleteButton" mat-icon-button aria-label="delete button icon" matTooltip="Delete Affiliation"
-        (click)="deleteGiftType()" [disabled]="defaultOptionsDisabled">
+    <button class="deleteButton" mat-icon-button aria-label="delete button icon" matTooltip="Delete Gift Type"
+        (click)="dialogDeleteGiftType()" [disabled]="defaultOptionsDisabled">
         <mat-icon class="deleteButtonIcon">delete</mat-icon>
     </button>
 

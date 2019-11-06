@@ -1,0 +1,17 @@
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Gift Type Delete" (click)="abortDelete()">clear</mat-icon>
+
+<h2 mat-dialog-title> Delete Gift Type: {{giftType.type}}</h2>
+
+<mat-dialog-actions>
+
+    <button mat-stroked-button (click)="abortDelete()">
+        <mat-icon>clear</mat-icon>
+        <span>No</span>
+    </button>
+
+    <button mat-stroked-button (click)="deleteGiftType()">
+        <mat-icon>check</mat-icon>
+        <span>Yes</span>
+    </button>
+
+</mat-dialog-actions>
