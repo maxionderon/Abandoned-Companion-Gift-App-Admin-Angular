@@ -3,11 +3,12 @@
 
 
 <mat-dialog-content>
-    <mat-form-field floatLabel="always" style="width: 100%">
+    <mat-form-field floatLabel="always" style="width: 100%" appearance="outline">
         <mat-label>Rename the Affiliation</mat-label>
         <input matInput placeholder="Rename the Affiliation" [value]="affiliation.name" required
             [formControl]="affiliationNameFormControl">
     </mat-form-field>
+    <mat-error *ngIf="affiliationNameFormControl.invalid">{{getErrorMessage()}}</mat-error>
 
 </mat-dialog-content>
 

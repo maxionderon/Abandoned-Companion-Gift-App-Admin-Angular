@@ -23,6 +23,17 @@ export class AffiliationModificationDialogComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  getErrorMessage(): string {
+
+    if( this.affiliationNameFormControl.hasError("required") ) {
+
+      return "please provide a value";
+
+    }
+
+    return "error";
+  }
 
   abortAffiliationModification(): void {
 

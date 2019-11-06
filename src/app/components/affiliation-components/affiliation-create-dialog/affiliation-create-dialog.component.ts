@@ -17,6 +17,12 @@ export class AffiliationCreateDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  getErrorMessage(): string {
+
+    return "please enter a value";
+
+  }
+
   abortAffiliationCreation(): void {
 
     this.affiliationCreateDialogRef.close();

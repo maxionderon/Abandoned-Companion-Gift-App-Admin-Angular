@@ -3,10 +3,11 @@
 <h2 mat-dialog-title> Create New Affiliation</h2>
 
 <mat-dialog-content>
-    <mat-form-field floatLabel="always" style="width: 100%">
+    <mat-form-field floatLabel="always" style="width: 100%" appearance="outline">
         <mat-label>Name of the Affiliation</mat-label>
-        <input #inputNewAffiliation matInput placeholder="Name the new Affiliation" required
+        <input matInput placeholder="Name the new Affiliation" required
             [formControl]="affiliationName">
+            <mat-error *ngIf="affiliationName.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 
 </mat-dialog-content>
