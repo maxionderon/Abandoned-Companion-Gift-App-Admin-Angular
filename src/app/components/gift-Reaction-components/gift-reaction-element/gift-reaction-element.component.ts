@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { GiftReaction } from 'src/app/model/gift-reaction';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment.prod';
+import { GiftReactionDeleteDialogComponent } from '../gift-reaction-delete-dialog/gift-reaction-delete-dialog.component';
 
 @Component({
   selector: 'app-gift-reaction-element',
@@ -16,57 +19,37 @@ export class GiftReactionElementComponent implements OnInit {
 
   @Output()
   eventUpdateGiftReaction = new EventEmitter();
-
-  @ViewChild("inputGiftReactionName", { static: false })
-  inputGiftReactionName: ElementRef;
-
-  @ViewChild("inputGiftReactionGainFactor", { static: false })
-  inputGiftReactionGainFactor: ElementRef;
-
-  readonly: boolean = true;
-  defaultOptionsDisabled: boolean = false;
-  showModOptions: boolean = false;
-
-  constructor() { }
+  
+  constructor(private giftReactionDeleteDialog: MatDialog) { }
 
   ngOnInit() {
   }
-
-  editModeGiftReaction(): void {
-
-    this.readonly = false;
-    this.defaultOptionsDisabled = true;
-    this.showModOptions = true;
-
-    this.inputGiftReactionName.nativeElement.select();
-
-  }
-
-  abortModeGiftReaction(): void {
-
-    this.readonly = true;
-    this.defaultOptionsDisabled = false;
-    this.showModOptions = false;
-
-  }
-
-  updateGiftReaction(): void {
-
-    this.readonly = true;
-    this.defaultOptionsDisabled = false;
-    this.showModOptions = false;
-
-    this.giftReaction.name = this.inputGiftReactionName.nativeElement.value;
-    this.giftReaction.gainFactor = this.inputGiftReactionGainFactor.nativeElement.value;
-
-    this.eventUpdateGiftReaction.emit( this.giftReaction );
-
-  }
-
+  
   deleteGiftReaction(): void {
 
     this.eventDeleteGiftReaction.emit(this.giftReaction);
     
+  }
+
+  dialogDeleteGiftReaction(): void {
+
+    const dialogConfigDeleteGiftReaction = new MatDialogConfig();
+
+    dialogConfigDeleteGiftReaction.width = environment.dialogWidth;
+    dialogConfigDeleteGiftReaction.data = this.giftReaction;
+
+    const dialogRef = this.giftReactionDeleteDialog.open(GiftReactionDeleteDialogComponent, dialogConfigDeleteGiftReaction)
+
+    dialogRef.afterClosed().subscribe( deleteFlag => {
+
+      if( deleteFlag === true ) {
+
+        this.deleteGiftReaction();
+        
+      }
+
+    });
+
   }
 
 }

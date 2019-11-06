@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { GiftReaction } from 'src/app/model/gift-reaction';
 
@@ -11,14 +11,38 @@ import { GiftReaction } from 'src/app/model/gift-reaction';
 export class GiftReactionCreateDialogComponent implements OnInit {
 
   giftReactionNameFormControl = new FormControl();
-  giftReactionGainFactorFormControl = new FormControl();
+  giftReactionGainFactorFormControl = new FormControl("", [Validators.min(0)]);
 
   constructor(private giftReactionCreateDialogRef: MatDialogRef<GiftReactionCreateDialogComponent>) { }
 
   ngOnInit() {
   }
 
-  getErrorMessage(): string {
+  getErrorMessageGiftReactionName(): string {
+
+    if( this.giftReactionNameFormControl.hasError("required") ) {
+
+      return "please provide a value";
+      
+    }   
+
+    return "error";
+
+  }
+
+  getErrorMessageGiftReactionGainFactor(): string {
+
+    if( this.giftReactionGainFactorFormControl.hasError("required") ) {
+
+      return "please provide a value";
+
+    }
+
+    if( this.giftReactionGainFactorFormControl.hasError("min") ) {
+
+      return "just positive values are allowed";
+
+    }
 
     return "error";
 

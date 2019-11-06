@@ -16,8 +16,6 @@ export class AffiliationComponent implements OnInit {
 
   affiliations: Affiliation[];
 
-  createMode: boolean = false;
-
   constructor(private affiliationService: AffiliationService, private affiliationCreateDialog: MatDialog) { }
 
   ngOnInit() {
