@@ -40,6 +40,7 @@ import { CompanionCreateCompanionGiftElementComponent } from './components/compa
 import { AffiliationCreateDialogComponent } from './components/affiliation-components/affiliation-create-dialog/affiliation-create-dialog.component';
 import { AffiliationDeleteDialogComponent } from './components/affiliation-components/affiliation-delete-dialog/affiliation-delete-dialog.component';
 import { AffiliationModificationDialogComponent } from './components/affiliation-components/affiliation-modification-dialog/affiliation-modification-dialog.component';
+import { GiftTypeCreateDialogComponent } from './components/gift-type-components/gift-type-create-dialog/gift-type-create-dialog.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AffiliationModificationDialogComponent } from './components/affiliation
     CompanionCreateCompanionGiftElementComponent,
     AffiliationCreateDialogComponent,
     AffiliationDeleteDialogComponent,
-    AffiliationModificationDialogComponent
+    AffiliationModificationDialogComponent,
+    GiftTypeCreateDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ import { AffiliationModificationDialogComponent } from './components/affiliation
   entryComponents: [
     AffiliationCreateDialogComponent,
     AffiliationDeleteDialogComponent,
-    AffiliationModificationDialogComponent
+    AffiliationModificationDialogComponent,
+    GiftTypeCreateDialogComponent
   ]
 })
 export class AppModule { }

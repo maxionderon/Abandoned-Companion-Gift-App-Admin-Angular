@@ -1,4 +1,4 @@
-<mat-card class="maxionderon-card-background" *ngIf="!createMode">
+<mat-card class="maxionderon-card-background">
 
     <mat-card-header>
         <mat-card-title>Gift Types</mat-card-title>
@@ -25,16 +25,13 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-stroked-button (click)="hideGiftTypesAndShowCreate()">
+        
+        <button mat-stroked-button (click)="dialogCreateGiftTypes()">
             <mat-icon class="createIcon">add_circle_outline</mat-icon>
-            <span>Create New Gift Type</span>
+            <span>Create New Gift Type Dialog</span>
         </button>
+    
     </mat-card-actions>
 
 </mat-card>
 
-<app-gift-type-create *ngIf="createMode" 
-    (eventAbortCreation)="showGiftTypesAndHideCreate()"
-    (eventCreateGiftType)="showGiftTypesAndHideCreate(); createGiftType($event)"
-    >
-</app-gift-type-create>
