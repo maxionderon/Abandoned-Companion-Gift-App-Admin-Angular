@@ -43,6 +43,7 @@ export class AffiliationElementComponent implements OnInit {
 
     const dialogConfigModifyAffiliation = new MatDialogConfig();
 
+    dialogConfigModifyAffiliation.width = "50%";
     dialogConfigModifyAffiliation.data = this.affiliation;
 
     const dialogRef = this.affiliationModifyDialog.open(AffiliationModificationDialogComponent, dialogConfigModifyAffiliation);
@@ -63,6 +64,7 @@ export class AffiliationElementComponent implements OnInit {
 
     const dialogConfigDeleteAffiliation = new MatDialogConfig();
 
+    dialogConfigDeleteAffiliation.width = "50%";
     dialogConfigDeleteAffiliation.data = this.affiliation;
 
     const dialogRef = this.affiliationDeleteDialog.open(AffiliationDeleteDialogComponent, dialogConfigDeleteAffiliation);

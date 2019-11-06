@@ -23,7 +23,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
-import { AffiliationCreateComponent } from './components/affiliation-components/affiliation-create/affiliation-create.component';
 import { GiftTypeComponent } from './components/gift-type-components/gift-type/gift-type.component';
 import { GiftTypeCreateComponent } from './components/gift-type-components/gift-type-create/gift-type-create.component';
 import { GiftTypeElementComponent } from './components/gift-type-components/gift-type-element/gift-type-element.component';
@@ -48,7 +47,6 @@ import { AffiliationModificationDialogComponent } from './components/affiliation
     AppComponent,
     AffiliationComponent,
     AffiliationElementComponent,
-    AffiliationCreateComponent,
     GiftTypeComponent,
     GiftTypeCreateComponent,
     GiftTypeElementComponent,

@@ -1,10 +1,6 @@
-<h2 mat-dialog-title> Delete Affiliation</h2>
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Affiliation Delete" (click)="abortDelete()">clear</mat-icon>
 
-<mat-dialog-content>
-    
-    {{affiliation.name}}
-
-</mat-dialog-content>
+<h2 mat-dialog-title> Delete Affiliation: {{affiliation.name}}</h2>
 
 <mat-dialog-actions>
 
