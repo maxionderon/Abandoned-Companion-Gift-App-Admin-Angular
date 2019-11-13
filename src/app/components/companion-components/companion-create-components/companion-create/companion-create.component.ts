@@ -10,6 +10,9 @@ import { Companion } from 'src/app/model/companion';
 import { FormControl } from '@angular/forms';
 import { CompanionService } from 'src/app/services/companion-service/companion.service';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
+import { AddAffiliationToCompanionDialogComponent } from '../add-affiliation-to-companion-dialog/add-affiliation-to-companion-dialog.component';
 
 @Component({
   selector: 'app-companion-create',
@@ -28,7 +31,7 @@ export class CompanionCreateComponent implements OnInit {
   formControlCompanionName = new FormControl();
   formControlCompanionDescription = new FormControl();
 
-  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private router: Router) { }
+  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private router: Router, private addAffiliationDialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -112,6 +115,31 @@ export class CompanionCreateComponent implements OnInit {
   addCompanionGiftToCompanion(companionGift: CompanionGift): void {
 
     this.companionGifts.push(companionGift);
+
+  }
+
+  dialogAddAffiliation(): void {
+
+    const dialogConfigAddAffiliation = new MatDialogConfig();
+
+    dialogConfigAddAffiliation.width = environment.dialogWidth;
+    dialogConfigAddAffiliation.data = this.affiliationOptions;
+
+    const dialogRef = this.addAffiliationDialog.open(AddAffiliationToCompanionDialogComponent, dialogConfigAddAffiliation);
+
+    dialogRef.afterClosed().subscribe( (affiliations: Affiliation[]) => {
+
+      if( affiliations !== undefined  ) {
+
+        for(let i = 0; i !== affiliations.length; i = i +1 ) {
+
+          this.addAffiliationToCompanion(affiliations[i]);
+  
+        }
+
+      }
+
+    });
 
   }
 

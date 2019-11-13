@@ -16,8 +16,6 @@
                 required></textarea>
         </mat-form-field>
 
-
-
         <mat-list>
 
             <h3 mat-subheader>Affiliations</h3>
@@ -28,13 +26,13 @@
                 </app-companion-create-affiliation-element>
             </mat-list-item>
             <mat-list-item *ngIf="affiliationOptions.length > 0" style="width: 100%">
-                <app-companion-create-add-affiliation [affiliationOptions]="affiliationOptions"
-                    (eventAddNewAffiliationToCompanion)="addAffiliationToCompanion($event)" style="width: 100%">
-                </app-companion-create-add-affiliation>
+                <button mat-stroked-button (click)="dialogAddAffiliation()" style="width: 100%">
+                    <mat-icon class="createIcon">add_circle_outline</mat-icon>
+                    <span>Add Affiliation to Companion</span>
+                </button>
             </mat-list-item>
         </mat-list>
-
-
+        
         <mat-list>
 
             <h3 mat-subheader>Companion Gifts</h3>
