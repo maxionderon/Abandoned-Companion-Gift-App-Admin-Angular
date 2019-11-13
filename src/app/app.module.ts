@@ -29,7 +29,6 @@ import { GiftReactionComponent } from './components/gift-Reaction-components/gif
 import { GiftReactionElementComponent } from './components/gift-Reaction-components/gift-reaction-element/gift-reaction-element.component';
 import { CompanionCreateComponent } from './components/companion-components/companion-create-components/companion-create/companion-create.component';
 import { CompanionCreateAffiliationElementComponent } from './components/companion-components/companion-create-components/companion-create-affiliation-element/companion-create-affiliation-element.component';
-import { CompanionCreateAddCompanionGiftComponent } from './components/companion-components/companion-create-components/companion-create-add-companion-gift/companion-create-add-companion-gift.component';
 import { CompanionComponent } from './components/companion-components/companions-components/companion/companion.component';
 import { CompanionDetailsComponent } from './components/companion-components/companions-components/companion-details/companion-details.component';
 import { HomeComponent } from './components/home/home.component';
@@ -44,6 +43,7 @@ import { GiftReactionCreateDialogComponent } from './components/gift-Reaction-co
 import { GiftReactionDeleteDialogComponent } from './components/gift-Reaction-components/gift-reaction-delete-dialog/gift-reaction-delete-dialog.component';
 import { GiftReactionModificationDialogComponent } from './components/gift-Reaction-components/gift-reaction-modification-dialog/gift-reaction-modification-dialog.component';
 import { AddAffiliationToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-affiliation-to-companion-dialog/add-affiliation-to-companion-dialog.component';
+import { AddCompanionGiftToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-companion-gift-to-companion-dialog/add-companion-gift-to-companion-dialog.component';
 
 
 @NgModule({
@@ -57,7 +57,6 @@ import { AddAffiliationToCompanionDialogComponent } from './components/companion
     GiftReactionElementComponent,
     CompanionCreateComponent,
     CompanionCreateAffiliationElementComponent,
-    CompanionCreateAddCompanionGiftComponent,
     CompanionComponent,
     CompanionDetailsComponent,
     HomeComponent,
@@ -71,7 +70,8 @@ import { AddAffiliationToCompanionDialogComponent } from './components/companion
     GiftReactionCreateDialogComponent,
     GiftReactionDeleteDialogComponent,
     GiftReactionModificationDialogComponent,
-    AddAffiliationToCompanionDialogComponent
+    AddAffiliationToCompanionDialogComponent,
+    AddCompanionGiftToCompanionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +105,8 @@ import { AddAffiliationToCompanionDialogComponent } from './components/companion
     GiftReactionCreateDialogComponent,
     GiftReactionDeleteDialogComponent,
     GiftReactionModificationDialogComponent,
-    AddAffiliationToCompanionDialogComponent
+    AddAffiliationToCompanionDialogComponent,
+    AddCompanionGiftToCompanionDialogComponent
   ]
 })
 export class AppModule { }

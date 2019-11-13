@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { AddAffiliationToCompanionDialogComponent } from '../add-affiliation-to-companion-dialog/add-affiliation-to-companion-dialog.component';
+import { AddCompanionGiftToCompanionDialogComponent } from '../add-companion-gift-to-companion-dialog/add-companion-gift-to-companion-dialog.component';
 
 @Component({
   selector: 'app-companion-create',
@@ -31,7 +32,7 @@ export class CompanionCreateComponent implements OnInit {
   formControlCompanionName = new FormControl();
   formControlCompanionDescription = new FormControl();
 
-  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private router: Router, private addAffiliationDialog: MatDialog) { }
+  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private router: Router, private addAffiliationDialog: MatDialog, private addCompanionGiftsDialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -140,6 +141,29 @@ export class CompanionCreateComponent implements OnInit {
       }
 
     });
+
+  }
+
+  dialogAddCompanionGiftsToCompanion(): void {
+
+    const dialogConfidAddCompanionGiftsToCompanion = new MatDialogConfig()
+
+    dialogConfidAddCompanionGiftsToCompanion.width = environment.dialogWidth;
+    dialogConfidAddCompanionGiftsToCompanion.data = { giftReaction: this.giftReactionOptions, giftTypes: this.giftTypeOptions }
+    
+
+    const dialogRef = this.addCompanionGiftsDialog.open( AddCompanionGiftToCompanionDialogComponent, dialogConfidAddCompanionGiftsToCompanion);
+
+    dialogRef.afterClosed().subscribe( (companionGift: CompanionGift) => {
+
+      console.log(companionGift);
+      if( companionGift instanceof CompanionGift ) {
+
+        this.addCompanionGiftToCompanion(companionGift);
+
+      }
+
+    } );
 
   }
 

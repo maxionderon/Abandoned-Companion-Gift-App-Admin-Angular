@@ -41,25 +41,22 @@
                 <app-companion-create-companion-gift-element [companionGift]="gift" style="width: 100%">
                 </app-companion-create-companion-gift-element>
             </mat-list-item>
+            
             <mat-list-item>
-                <app-companion-create-add-companion-gift [giftTypes]="giftTypeOptions"
-                    [giftReactions]="giftReactionOptions"
-                    (eventAddCompanionGiftToCompanion)="addCompanionGiftToCompanion($event)" style="width: 100%">
-                </app-companion-create-add-companion-gift>
+                <button mat-stroked-button (click)="dialogAddCompanionGiftsToCompanion()" style="width: 100%">
+                    <mat-icon class="createIcon">add_circle_outline</mat-icon>
+                    <span>Add Gifts to Companion</span>
+                </button>
             </mat-list-item>
+
         </mat-list>
-
-
-
-
-
 
     </mat-card-content>
 
     <mat-card-actions>
         <button mat-stroked-button (click)="createCompanion()">
             <mat-icon class="createIcon">add_circle_outline</mat-icon>
-            <span>Add Companion</span>
+            <span>Create Companion</span>
         </button>
     </mat-card-actions>
 

@@ -1,0 +1,37 @@
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Add Companion Gift to Companion"
+    (click)="abortAddCompanionGift()">clear</mat-icon>
+
+<h2 mat-dialog-title> Add Companion Gifts to Companion</h2>
+
+<mat-dialog-content>
+
+    <mat-form-field style="min-width: 40%; width: 49%; margin-right: 1%;">
+        <mat-select placeholder="Gift Type" [formControl]="giftTypeFormControl" required>
+            <mat-option *ngFor="let giftType of giftTypes" [value]="giftType">{{giftType.type}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="giftTypeFormControl.invalid">{{getErrorMessageGiftType()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="min-width: 40% ; width: 50%;">
+        <mat-select placeholder="Gift Reaction" [formControl]="giftReactionFormControl" required>
+            <mat-option *ngFor="let giftReaction of giftReactions" [value]="giftReaction">{{giftReaction.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="giftReactionFormControl.invalid">{{getErrorMessageGiftReaction()}}</mat-error>
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-stroked-button (click)="abortAddCompanionGift()">
+        <mat-icon class="createIcon">clear</mat-icon>
+        <span>Abort</span>
+    </button>
+
+    <button mat-stroked-button (click)="addCompanionGiftToCompanion()">
+        <mat-icon class="createIcon">check</mat-icon>
+        <span>Add Companion Gift to Companion</span>
+    </button>
+
+</mat-dialog-actions>
