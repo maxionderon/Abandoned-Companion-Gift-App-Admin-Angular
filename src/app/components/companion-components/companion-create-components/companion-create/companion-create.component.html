@@ -38,11 +38,11 @@
             <h3 mat-subheader>Companion Gifts</h3>
 
             <mat-list-item *ngFor="let gift of companionGifts" style="width: 100%">
-                <app-companion-create-companion-gift-element [companionGift]="gift" style="width: 100%">
+                <app-companion-create-companion-gift-element [companionGift]="gift" (eventRemoveCompanionGiftFromCompanion)="removeCompanionGiftFromCompanion($event)" style="width: 100%">
                 </app-companion-create-companion-gift-element>
             </mat-list-item>
             
-            <mat-list-item>
+            <mat-list-item *ngIf="giftTypeOptions.length > 0" >
                 <button mat-stroked-button (click)="dialogAddCompanionGiftsToCompanion()" style="width: 100%">
                     <mat-icon class="createIcon">add_circle_outline</mat-icon>
                     <span>Add Gifts to Companion</span>

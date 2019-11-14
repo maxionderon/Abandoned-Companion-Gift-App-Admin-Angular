@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CompanionGift } from 'src/app/model/companion-gift';
 
 @Component({
@@ -11,9 +11,18 @@ export class CompanionCreateCompanionGiftElementComponent implements OnInit {
   @Input()
   companionGift: CompanionGift;
 
+  @Output()
+  eventRemoveCompanionGiftFromCompanion = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  removeCompanionGiftFromCompanion(): void {
+
+    this.eventRemoveCompanionGiftFromCompanion.emit(this.companionGift);
+
   }
 
 }

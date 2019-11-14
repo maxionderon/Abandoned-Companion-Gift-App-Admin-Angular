@@ -38,7 +38,7 @@ export class CompanionCreateComponent implements OnInit {
 
     this.getAffiliationOptions();
     this.getGiftReactionOptions();
-    this.getGiftTypes();
+    this.getGiftTypeOptions();
 
   }
 
@@ -48,7 +48,7 @@ export class CompanionCreateComponent implements OnInit {
 
       this.affiliationOptions = affiliationOptions;
 
-      for (let i = 0; i != this.companionAffiliations.length; i = i + 1) {
+      for (let i = 0; i !== this.companionAffiliations.length; i = i + 1) {
 
         this.removeAffiliationOption(this.companionAffiliations[i]);
 
@@ -103,19 +103,56 @@ export class CompanionCreateComponent implements OnInit {
 
   }
 
-  getGiftTypes(): void {
+  getGiftTypeOptions(): void {
 
     this.giftTypeService.getGiftTypes().subscribe(giftTypes => {
 
       this.giftTypeOptions = giftTypes;
 
+      for( let i = 0; i !== this.companionGifts.length; i = i + 1 ) {
+
+        this.removeGiftTypeOption(this.companionGifts[i].giftType);
+
+      }
+
     });
+
+  }
+
+  addGiftTypeOption(giftType: GiftType): void {
+
+    this.giftTypeOptions.push(giftType);
+
+  }
+
+  removeGiftTypeOption(giftType: GiftType): void {
+
+    console.log( giftType);
+
+    for( let i = 0; i !== this.giftTypeOptions.length; i = i + 1 ) {
+
+      if( giftType.id === this.giftTypeOptions[i].id ) {
+
+        this.giftTypeOptions.splice(i, 1);
+        break;
+
+      }
+
+    }
 
   }
 
   addCompanionGiftToCompanion(companionGift: CompanionGift): void {
 
     this.companionGifts.push(companionGift);
+    this.removeGiftTypeOption(companionGift.giftType);
+
+  }
+
+  removeCompanionGiftFromCompanion(companionGift: CompanionGift): void {
+
+    this.companionGifts.splice(this.companionGifts.indexOf(companionGift), 1);
+    this.addGiftTypeOption(companionGift.giftType);
 
   }
 
@@ -151,12 +188,10 @@ export class CompanionCreateComponent implements OnInit {
     dialogConfidAddCompanionGiftsToCompanion.width = environment.dialogWidth;
     dialogConfidAddCompanionGiftsToCompanion.data = { giftReaction: this.giftReactionOptions, giftTypes: this.giftTypeOptions }
     
-
     const dialogRef = this.addCompanionGiftsDialog.open( AddCompanionGiftToCompanionDialogComponent, dialogConfidAddCompanionGiftsToCompanion);
 
     dialogRef.afterClosed().subscribe( (companionGift: CompanionGift) => {
 
-      console.log(companionGift);
       if( companionGift instanceof CompanionGift ) {
 
         this.addCompanionGiftToCompanion(companionGift);
