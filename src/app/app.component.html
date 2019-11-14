@@ -10,14 +10,46 @@
 
         <div fxLayout="column" fxFlex>
 
-                <div style="margin-left: 10%; margin-right: 10%; margin-top: 1%; margin-bottom: 1%;">
+                <mat-sidenav-container style="height: 100%;">
 
-                        <router-outlet></router-outlet>
+                        <mat-sidenav mode="side" opened style="margin: 1%; max-height: 80%; height: auto; width: 15%;">
+                                
+                                <mat-list>
 
-                </div>
+                                        <mat-list-item>
+                                                <a routerLink="/companion">Companions</a>
+                                        </mat-list-item>
+                                        <mat-list-item>
+                                                <a routerLink="/affiliations">Affiliations</a>
+                                        </mat-list-item>
+                                        <mat-list-item>
+                                                <a routerLink="/giftTypes">Gift Types</a>
+                                        </mat-list-item>
+                                        <mat-list-item>
+                                                <a routerLink="/companion">Gift Reactions</a>
+                                        </mat-list-item>
 
+                                </mat-list>
+
+                        </mat-sidenav>
+
+                        <mat-sidenav-content>
+                                <div fxLayout="column" fxFlex>
+
+                                        <div
+                                                style="margin-left: 5%; margin-right: 5%; margin-top: 1%; margin-bottom: 1%;">
+
+                                                <router-outlet></router-outlet>
+
+                                        </div>
+
+                                </div>
+                        </mat-sidenav-content>
+
+
+                </mat-sidenav-container>
         </div>
-
+        
         <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="center center">
 
                 <a href="https://maxionderon.github.io"><span>© Maximilian Meyer</span></a>

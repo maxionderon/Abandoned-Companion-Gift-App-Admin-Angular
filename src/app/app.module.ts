@@ -20,6 +20,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from '@angular/material/sidenav'; 
 
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
@@ -91,7 +92,8 @@ import { AddCompanionGiftToCompanionDialogComponent } from './components/compani
     MatTooltipModule,
     MatSelectModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent],
