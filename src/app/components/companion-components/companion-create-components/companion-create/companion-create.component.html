@@ -9,11 +9,23 @@
 
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Companion Name" [formControl]="formControlCompanionName" required>
+            <mat-hint align="start">
+                <mat-error *ngIf="!formControlCompanionName.valid&&(formControlCompanionName.dirty||formControlCompanionName.touched)">
+                    {{getErrorMessageCompanionName()}}
+                </mat-error>
+            </mat-hint>
+            <mat-hint align="end">{{formControlCompanionName.value.length}} / 250</mat-hint>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <textarea matInput placeholder="Companion Description" [formControl]="formControlCompanionDescription"
-                required></textarea>
+            <textarea matInput cdkTextareaAutosize placeholder="Companion Description"
+                [formControl]="formControlCompanionDescription" required></textarea>
+            <mat-hint align="start">
+                <mat-error *ngIf="!formControlCompanionDescription.valid&&(formControlCompanionDescription.dirty||formControlCompanionDescription.touched)">
+                    {{getErrorMessageCompanionDescription()}}
+                </mat-error>
+            </mat-hint>
+            <mat-hint align="end">{{formControlCompanionDescription.value.length}} / 65000</mat-hint>
         </mat-form-field>
 
         <mat-list>
@@ -32,17 +44,19 @@
                 </button>
             </mat-list-item>
         </mat-list>
-        
+
         <mat-list>
 
             <h3 mat-subheader>Companion Gifts</h3>
 
             <mat-list-item *ngFor="let gift of companionGifts" style="width: 100%">
-                <app-companion-create-companion-gift-element [companionGift]="gift" (eventRemoveCompanionGiftFromCompanion)="removeCompanionGiftFromCompanion($event)" style="width: 100%">
+                <app-companion-create-companion-gift-element [companionGift]="gift"
+                    (eventRemoveCompanionGiftFromCompanion)="removeCompanionGiftFromCompanion($event)"
+                    style="width: 100%">
                 </app-companion-create-companion-gift-element>
             </mat-list-item>
-            
-            <mat-list-item *ngIf="giftTypeOptions.length > 0" >
+
+            <mat-list-item *ngIf="giftTypeOptions.length > 0">
                 <button mat-stroked-button (click)="dialogAddCompanionGiftsToCompanion()" style="width: 100%">
                     <mat-icon class="createIcon">add_circle_outline</mat-icon>
                     <span>Add Gifts to Companion</span>

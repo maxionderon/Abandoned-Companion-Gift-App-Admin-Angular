@@ -21,6 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatDividerModule} from '@angular/material/divider'; 
 
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
@@ -93,7 +94,8 @@ import { AddCompanionGiftToCompanionDialogComponent } from './components/compani
     MatSelectModule,
     MatToolbarModule,
     MatDialogModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

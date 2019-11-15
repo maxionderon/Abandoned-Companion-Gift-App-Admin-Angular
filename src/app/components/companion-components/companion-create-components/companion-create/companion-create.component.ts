@@ -7,7 +7,7 @@ import { GiftType } from 'src/app/model/gift-type';
 import { GiftReactionService } from 'src/app/services/gift-reaction-service/gift-reaction.service';
 import { GiftTypeService } from 'src/app/services/gift-type-service/gift-type.service';
 import { Companion } from 'src/app/model/companion';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { CompanionService } from 'src/app/services/companion-service/companion.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -29,8 +29,8 @@ export class CompanionCreateComponent implements OnInit {
   giftReactionOptions: GiftReaction[] = [];
   giftTypeOptions: GiftType[] = [];
 
-  formControlCompanionName = new FormControl();
-  formControlCompanionDescription = new FormControl();
+  formControlCompanionName = new FormControl( '', Validators.maxLength(250));
+  formControlCompanionDescription = new FormControl('', Validators.maxLength(65000));
 
   constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private router: Router, private addAffiliationDialog: MatDialog, private addCompanionGiftsDialog: MatDialog) { }
 
@@ -39,6 +39,46 @@ export class CompanionCreateComponent implements OnInit {
     this.getAffiliationOptions();
     this.getGiftReactionOptions();
     this.getGiftTypeOptions();
+
+  }
+
+  getErrorMessageCompanionName(): string {
+
+    if( this.formControlCompanionName.hasError("required") ) {
+
+      return "please provide a value"; 
+
+    }
+
+    if( this.formControlCompanionName.hasError("maxlength") ) {
+
+      this.formControlCompanionName.markAsTouched();
+
+      return "just 250 characters allowed"
+    
+    }
+
+    return "error";
+
+  }
+
+  getErrorMessageCompanionDescription(): string {
+
+    if( this.formControlCompanionDescription.hasError("required") ) {
+
+      return "please provide a value";
+
+    }
+
+    if( this.formControlCompanionDescription.hasError("maxlength") ) {
+
+      this.formControlCompanionDescription.markAsTouched();
+
+      return "just 65000 characters allowed"
+
+    }
+
+    return "error";
 
   }
 
@@ -224,7 +264,7 @@ export class CompanionCreateComponent implements OnInit {
       this.router.navigateByUrl("/companion");
 
     } else {
-
+      
       this.formControlCompanionName.markAsTouched();
       this.formControlCompanionDescription.markAsTouched();
 
