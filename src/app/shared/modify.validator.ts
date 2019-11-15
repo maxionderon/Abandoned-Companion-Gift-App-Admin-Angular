@@ -4,7 +4,7 @@ export function sameValueValidator(value: string): ValidatorFn {
 
     return (control: AbstractControl): {[key: string]: any} | null => {
 
-        if( control.value === value ) {
+        if( control.value.toString() === value ) {
     
             return { "sameValue": {value: control.value }};
     

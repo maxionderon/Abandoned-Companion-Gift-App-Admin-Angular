@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { GiftReaction } from 'src/app/model/gift-reaction';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { sameValueValidator } from 'src/app/shared/modify.validator';
 
 @Component({
   selector: 'app-gift-reaction-modification-dialog',
@@ -12,13 +13,18 @@ export class GiftReactionModificationDialogComponent implements OnInit {
 
   giftReaction: GiftReaction;
 
-  giftReactionNameFormControl = new FormControl();
-  giftReactionGainFactorFormControl = new FormControl();
+  formControlGiftReactionName: FormControl; 
+  formControlGiftReactionGainFactor: FormControl;
 
   constructor(private giftReactionModifyDialogRef: MatDialogRef<GiftReactionModificationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) giftReaction: GiftReaction) { 
 
       this.giftReaction = giftReaction;
+
+      this.formControlGiftReactionName = new FormControl("", [Validators.maxLength(250), sameValueValidator(this.giftReaction.name)]);
+      this.formControlGiftReactionName.setValue(this.giftReaction.name);
+      this.formControlGiftReactionGainFactor = new FormControl("", [Validators.min(0), Validators.max(2000000000), sameValueValidator(this.giftReaction.gainFactor.toString())]);
+      this.formControlGiftReactionGainFactor.setValue(this.giftReaction.gainFactor);
 
     }
 
@@ -27,11 +33,27 @@ export class GiftReactionModificationDialogComponent implements OnInit {
 
   getErrorMessageGiftReactionName(): string {
 
-    if( this.giftReactionNameFormControl.hasError("required") ) {
+    if( this.formControlGiftReactionName.hasError("required") ) {
 
       return "please provide a value";
-      
-    }   
+
+    }
+
+    if( this.formControlGiftReactionName.hasError("maxlength") ) {
+
+      this.formControlGiftReactionName.markAsTouched();
+
+      return "just 250 characters allowed";
+
+    }
+
+    if( this.formControlGiftReactionName.hasError("sameValue")) {
+
+      this.formControlGiftReactionName.markAsTouched();
+
+      return this.giftReaction.name + " is not allowed";
+
+    }
 
     return "error";
 
@@ -39,15 +61,29 @@ export class GiftReactionModificationDialogComponent implements OnInit {
 
   getErrorMessageGiftReactionGainFactor(): string {
 
-    if( this.giftReactionGainFactorFormControl.hasError("required") ) {
+    if( this.formControlGiftReactionGainFactor.hasError("required") ) {
 
       return "please provide a value";
 
     }
 
-    if( this.giftReactionGainFactorFormControl.hasError("min") ) {
+    if( this.formControlGiftReactionGainFactor.hasError("min") ) {
 
       return "just positive values are allowed";
+
+    }
+
+    if( this.formControlGiftReactionGainFactor.hasError("max")) {
+
+      return "just values till 2.000.000.000 are allowed"
+    
+    }
+
+    if( this.formControlGiftReactionGainFactor.hasError("sameValue")) {
+
+      this.formControlGiftReactionGainFactor.markAsTouched();
+
+      return this.giftReaction.gainFactor + " is not allowed";
 
     }
 
@@ -63,17 +99,17 @@ export class GiftReactionModificationDialogComponent implements OnInit {
 
   modifyGiftReaction(): void {
 
-    if( this.giftReactionNameFormControl.valid && this.giftReactionGainFactorFormControl.valid ) {
+    if( this.formControlGiftReactionName.valid && this.formControlGiftReactionGainFactor.valid ) {
 
-      this.giftReaction.name = this.giftReactionNameFormControl.value;
-      this.giftReaction.gainFactor = this.giftReactionGainFactorFormControl.value;
+      this.giftReaction.name = this.formControlGiftReactionName.value;
+      this.giftReaction.gainFactor = this.formControlGiftReactionGainFactor.value;
 
       this.giftReactionModifyDialogRef.close( this.giftReaction );
 
     } else {
 
-      this.giftReactionNameFormControl.markAsTouched();
-      this.giftReactionGainFactorFormControl.markAsTouched();
+      this.formControlGiftReactionName.markAsTouched();
+      this.formControlGiftReactionGainFactor.markAsTouched();
 
     }
 

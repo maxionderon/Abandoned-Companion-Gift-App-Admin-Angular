@@ -10,8 +10,8 @@ import { GiftReaction } from 'src/app/model/gift-reaction';
 })
 export class GiftReactionCreateDialogComponent implements OnInit {
 
-  giftReactionNameFormControl = new FormControl();
-  giftReactionGainFactorFormControl = new FormControl("", [Validators.min(0)]);
+  formControlGiftReactionName = new FormControl("", Validators.maxLength(250)); 
+  formControlGiftReactionGainFactor = new FormControl("", [Validators.min(0), Validators.max(2000000000)] );
 
   constructor(private giftReactionCreateDialogRef: MatDialogRef<GiftReactionCreateDialogComponent>) { }
 
@@ -20,28 +20,43 @@ export class GiftReactionCreateDialogComponent implements OnInit {
 
   getErrorMessageGiftReactionName(): string {
 
-    if( this.giftReactionNameFormControl.hasError("required") ) {
+    if( this.formControlGiftReactionName.hasError("required") ) {
 
-      return "please provide a value";
-      
-    }   
+      return "please provide a value"; 
+
+    }
+
+    if( this.formControlGiftReactionName.hasError("maxlength") ) {
+
+      this.formControlGiftReactionName.markAsTouched();
+
+      return "just 250 characters allowed";
+
+    }
 
     return "error";
 
   }
 
   getErrorMessageGiftReactionGainFactor(): string {
+     
+    if( this.formControlGiftReactionGainFactor.hasError("required") ) {
 
-    if( this.giftReactionGainFactorFormControl.hasError("required") ) {
+      this.formControlGiftReactionGainFactor.markAsTouched();  
 
       return "please provide a value";
 
     }
 
-    if( this.giftReactionGainFactorFormControl.hasError("min") ) {
+    if( this.formControlGiftReactionGainFactor.hasError("min") ) {
 
       return "just positive values are allowed";
 
+    }
+
+    if( this.formControlGiftReactionGainFactor.hasError("max")) {
+
+      return "just values till 2.000.000.000 are allowed"
     }
 
     return "error";
@@ -56,20 +71,20 @@ export class GiftReactionCreateDialogComponent implements OnInit {
   
   createGiftReaction(): void {
 
-    if( this.giftReactionNameFormControl.valid && this.giftReactionGainFactorFormControl. valid ) {
+    if( this.formControlGiftReactionName.valid && this.formControlGiftReactionGainFactor. valid ) {
 
       let giftReaction = new GiftReaction();
 
       giftReaction.id = 0;
-      giftReaction.name = this.giftReactionNameFormControl.value;
-      giftReaction.gainFactor = this.giftReactionGainFactorFormControl.value;
+      giftReaction.name = this.formControlGiftReactionName.value;
+      giftReaction.gainFactor = this.formControlGiftReactionGainFactor.value;
 
       this.giftReactionCreateDialogRef.close(giftReaction);
 
     } else {
 
-      this.giftReactionNameFormControl.markAsTouched();
-      this.giftReactionGainFactorFormControl.markAsTouched();
+      this.formControlGiftReactionName.markAsTouched();
+      this.formControlGiftReactionGainFactor.markAsTouched();
 
     }
 
