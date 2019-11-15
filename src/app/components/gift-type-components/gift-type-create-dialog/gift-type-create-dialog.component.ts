@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { GiftType } from 'src/app/model/gift-type';
 
@@ -10,7 +10,7 @@ import { GiftType } from 'src/app/model/gift-type';
 })
 export class GiftTypeCreateDialogComponent implements OnInit {
 
-  giftTypeNameFormControl = new FormControl();
+  formControlGiftTypeName = new FormControl('', Validators.maxLength(250));
 
   constructor(private giftTypeCreateDialogRef: MatDialogRef<GiftTypeCreateDialogComponent>) { }
 
@@ -19,9 +19,24 @@ export class GiftTypeCreateDialogComponent implements OnInit {
 
   getErrorMessage(): string {
 
-    return "please enter a value";
+    if( this.formControlGiftTypeName.hasError("required") ) {
+
+      return "please provide a value"; 
+
+    }
+
+    if( this.formControlGiftTypeName.hasError("maxlength") ) {
+
+      this.formControlGiftTypeName.markAsTouched();
+
+      return "just 250 characters allowed"
+    
+    }
+
+    return "error";
 
   }
+  
 
   abortGiftTypeCreation(): void {
 
@@ -31,18 +46,18 @@ export class GiftTypeCreateDialogComponent implements OnInit {
 
   createGiftType(): void {
 
-    if( this.giftTypeNameFormControl.valid) {
+    if( this.formControlGiftTypeName.valid) {
 
       let giftType = new GiftType();
 
       giftType.id = 0;
-      giftType.type = this.giftTypeNameFormControl.value;
+      giftType.type = this.formControlGiftTypeName.value;
 
       this.giftTypeCreateDialogRef.close(giftType);
 
     } else {
 
-      this.giftTypeNameFormControl.markAsTouched();
+      this.formControlGiftTypeName.markAsTouched();
 
     }
 
