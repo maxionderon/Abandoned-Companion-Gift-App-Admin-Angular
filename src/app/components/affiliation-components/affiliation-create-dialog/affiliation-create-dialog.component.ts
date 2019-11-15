@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Affiliation } from 'src/app/model/affiliation';
 
@@ -10,7 +10,7 @@ import { Affiliation } from 'src/app/model/affiliation';
 })
 export class AffiliationCreateDialogComponent implements OnInit {
 
-  affiliationName = new FormControl();
+  formControlAffiliationName = new FormControl('', Validators.maxLength(250));
 
   constructor(private affiliationCreateDialogRef: MatDialogRef<AffiliationCreateDialogComponent>) { }
 
@@ -19,7 +19,21 @@ export class AffiliationCreateDialogComponent implements OnInit {
 
   getErrorMessage(): string {
 
-    return "please enter a value";
+    if( this.formControlAffiliationName.hasError("required") ) {
+
+      return "please provide a value"; 
+
+    }
+
+    if( this.formControlAffiliationName.hasError("maxlength") ) {
+
+      this.formControlAffiliationName.markAsTouched();
+
+      return "just 250 characters allowed";
+
+    }
+
+    return "error";
 
   }
 
@@ -31,18 +45,18 @@ export class AffiliationCreateDialogComponent implements OnInit {
 
   createAffiliation(): void {
 
-    if(this.affiliationName.valid) {
+    if(this.formControlAffiliationName.valid) {
 
       let affiliation = new Affiliation();
       affiliation.id = 0;
-      affiliation.name = this.affiliationName.value;
+      affiliation.name = this.formControlAffiliationName.value;
       //this.affiliationName.reset();
 
       this.affiliationCreateDialogRef.close(affiliation);
 
     } else {
 
-      this.affiliationName.markAsTouched();
+      this.formControlAffiliationName.markAsTouched();
 
     }
 
