@@ -10,35 +10,42 @@ import { environment } from 'src/environments/environment';
 export class GiftReactionService {
 
   url = environment.baseURL + "/giftReaction";
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
+  
   constructor(private http: HttpClient) { }
 
-  getGiftReactions(): Observable<GiftReaction[]>{
+  getGiftReactions(token: string): Observable<GiftReaction[]>{
 
-    return this.http.get<GiftReaction[]>(this.url);
-
-  }
-
-  postGiftReaction(giftReaction: GiftReaction): Observable<any> {
-
-    return this.http.post(this.url, giftReaction, this.httpOptions);
+    return this.http.get<GiftReaction[]>(this.url, this.getHttpOptions(token));
 
   }
 
-  putGiftReaction(giftReaction: GiftReaction): Observable<any> {
+  postGiftReaction(giftReaction: GiftReaction, token: string): Observable<GiftReaction[]> {
 
-    return this.http.put(this.url + "/" + giftReaction.id, giftReaction, this.httpOptions);
+    return this.http.post<GiftReaction[]>(this.url, giftReaction, this.getHttpOptions(token));
 
   }
 
-  deleteGiftReaction(id: number): Observable<any> {
+  putGiftReaction(giftReaction: GiftReaction, token: string): Observable<GiftReaction[]> {
 
-    return this.http.delete(this.url + "/" + id );
+    return this.http.put<GiftReaction[]>(this.url + "/" + giftReaction.id, giftReaction, this.getHttpOptions(token));
+
+  }
+
+  deleteGiftReaction(id: number, token: string): Observable<GiftReaction[]> {
+
+    return this.http.delete<GiftReaction[]>(this.url + "/" + id, this.getHttpOptions(token) );
     
+  }
+
+  getHttpOptions(token: string) {
+
+    let headers: HttpHeaders = new HttpHeaders();
+
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('recaptcha-response', token);
+
+    return { headers };
+
   }
 
 }

@@ -140,9 +140,13 @@ export class CompanionCreateComponent implements OnInit {
 
   getGiftReactionOptions(): void {
 
-    this.giftReactionService.getGiftReactions().subscribe(giftReactions => {
+    this.reCaptchaV3Service.execute("getGiftReactions").subscribe( token => {
 
-      this.giftReactionOptions = giftReactions;
+      this.giftReactionService.getGiftReactions( token ).subscribe(giftReactions => {
+
+        this.giftReactionOptions = giftReactions;
+  
+      });
 
     });
 

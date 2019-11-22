@@ -4,6 +4,7 @@ import { GiftReactionService } from 'src/app/services/gift-reaction-service/gift
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { GiftReactionCreateDialogComponent } from '../gift-reaction-create-dialog/gift-reaction-create-dialog.component';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-gift-reaction',
@@ -14,7 +15,7 @@ export class GiftReactionComponent implements OnInit {
 
   giftReactions: GiftReaction[];
 
-  constructor(private giftReactionService: GiftReactionService,
+  constructor(private giftReactionService: GiftReactionService, private reCaptchaV3Service: ReCaptchaV3Service,
     private giftReactionCreateDialog: MatDialog) { }
 
   ngOnInit() {
@@ -25,9 +26,13 @@ export class GiftReactionComponent implements OnInit {
 
   createGiftReaction(giftReaction: GiftReaction): void {
 
-    this.giftReactionService.postGiftReaction(giftReaction).subscribe( response =>  {
+    this.reCaptchaV3Service.execute("createGiftReaction").subscribe( token => {
 
-      this.giftReactions = response;
+      this.giftReactionService.postGiftReaction(giftReaction, token).subscribe( response =>  {
+
+        this.giftReactions = response;
+  
+      });
 
     });
 
@@ -35,19 +40,27 @@ export class GiftReactionComponent implements OnInit {
 
   getGiftReactions(): void {
 
-    this.giftReactionService.getGiftReactions().subscribe( response => {
+    this.reCaptchaV3Service.execute("getGiftReactions").subscribe( token => {
 
-      this.giftReactions = response;
+      this.giftReactionService.getGiftReactions(token).subscribe( response => {
 
-    });
+        this.giftReactions = response;
+  
+      });
+
+    });    
 
   }
 
   updateGiftReaction(giftReaction: GiftReaction): void {
 
-    this.giftReactionService.putGiftReaction(giftReaction).subscribe( response => {
+    this.reCaptchaV3Service.execute("updateGiftReaction").subscribe( token => {
 
-      this.giftReactions = response;
+      this.giftReactionService.putGiftReaction(giftReaction, token).subscribe( response => {
+
+        this.giftReactions = response;
+  
+      });
 
     });
 
@@ -55,12 +68,16 @@ export class GiftReactionComponent implements OnInit {
 
   deleteGiftReaction(giftReaction: GiftReaction): void {
 
-    this.giftReactionService.deleteGiftReaction(giftReaction.id).subscribe( response => {
+    this.reCaptchaV3Service.execute("deleteGiftReaction").subscribe( token => {
 
-      this.giftReactions = response;
+      this.giftReactionService.deleteGiftReaction(giftReaction.id, token).subscribe( response => {
+
+        this.giftReactions = response;
+  
+      });
 
     });
-
+    
   }
   
   dialogCreateGiftType(): void {
