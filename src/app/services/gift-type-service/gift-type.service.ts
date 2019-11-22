@@ -11,32 +11,39 @@ export class GiftTypeService {
 
   url =  environment.baseURL + "/giftType";
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(private http: HttpClient) { }
 
-  getGiftTypes(): Observable<GiftType[]> {
+  getGiftTypes(token: string): Observable<GiftType[]> {
 
-    return this.http.get<GiftType[]>(this.url);
-
-  }
-
-  postGiftType(giftType: GiftType): Observable<any> {
-
-    return this.http.post(this.url, giftType, this.httpOptions);
-  }
-
-  putGiftType(giftType: GiftType): Observable<any> {
-
-    return this.http.put(this.url + "/" + giftType.id, giftType, this.httpOptions);
+    return this.http.get<GiftType[]>(this.url, this.getHttpOptions(token));
 
   }
 
-  deleteGiftType(id: number): Observable<any> {
+  postGiftType(giftType: GiftType, token: string): Observable<GiftType[]> {
 
-    return this.http.delete(this.url + "/" + id);
+    return this.http.post<GiftType[]>(this.url, giftType, this.getHttpOptions(token));
+  }
+
+  putGiftType(giftType: GiftType, token: string): Observable<GiftType[]> {
+
+    return this.http.put<GiftType[]>(this.url + "/" + giftType.id, giftType, this.getHttpOptions(token));
+
+  }
+
+  deleteGiftType(id: number, token: string): Observable<GiftType[]> {
+
+    return this.http.delete<GiftType[]>(this.url + "/" + id, this.getHttpOptions(token));
+
+  }
+
+  getHttpOptions(token: string) {
+
+    let headers: HttpHeaders = new HttpHeaders();
+
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('recaptcha-response', token);
+
+    return { headers };
 
   }
 

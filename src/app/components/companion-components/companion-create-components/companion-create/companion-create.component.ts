@@ -154,15 +154,19 @@ export class CompanionCreateComponent implements OnInit {
 
   getGiftTypeOptions(): void {
 
-    this.giftTypeService.getGiftTypes().subscribe(giftTypes => {
+    this.reCaptchaV3Service.execute("getGiftTypes").subscribe( token => {
 
-      this.giftTypeOptions = giftTypes;
+      this.giftTypeService.getGiftTypes(token).subscribe(giftTypes => {
 
-      for( let i = 0; i !== this.companionGifts.length; i = i + 1 ) {
+        this.giftTypeOptions = giftTypes;
+  
+        for( let i = 0; i !== this.companionGifts.length; i = i + 1 ) {
+  
+          this.removeGiftTypeOption(this.companionGifts[i].giftType);
+  
+        }
 
-        this.removeGiftTypeOption(this.companionGifts[i].giftType);
-
-      }
+      });
 
     });
 

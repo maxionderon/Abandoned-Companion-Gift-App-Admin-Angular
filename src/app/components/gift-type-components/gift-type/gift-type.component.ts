@@ -4,6 +4,7 @@ import { GiftType } from 'src/app/model/gift-type';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { GiftTypeCreateDialogComponent } from '../gift-type-create-dialog/gift-type-create-dialog.component';
 import { environment } from 'src/environments/environment';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-gift-type',
@@ -14,7 +15,7 @@ export class GiftTypeComponent implements OnInit {
 
   giftTypes: GiftType[];
 
-  constructor(private giftTypeService: GiftTypeService,
+  constructor(private giftTypeService: GiftTypeService, private reCaptchaV3Service: ReCaptchaV3Service,
     private giftTypeCreateDialog: MatDialog) { }
 
   ngOnInit() {
@@ -25,19 +26,27 @@ export class GiftTypeComponent implements OnInit {
 
   getGiftTypes(): void {
 
-    this.giftTypeService.getGiftTypes().subscribe( giftTypes => {
+    this.reCaptchaV3Service.execute("getGiftTypes").subscribe( token => {
 
-      this.giftTypes = giftTypes;
-      
+      this.giftTypeService.getGiftTypes(token).subscribe( giftTypes => {
+
+        this.giftTypes = giftTypes;
+        
+      });
+
     });
-    
+
   }
 
   createGiftType(giftType: GiftType): void {
 
-    this.giftTypeService.postGiftType(giftType).subscribe( response => {
+    this.reCaptchaV3Service.execute("createGiftType").subscribe( token => {
 
-      this.giftTypes = response;
+      this.giftTypeService.postGiftType(giftType, token).subscribe( response => {
+
+        this.giftTypes = response;
+  
+      });
 
     });
 
@@ -45,9 +54,13 @@ export class GiftTypeComponent implements OnInit {
 
   updateGiftType(giftType: GiftType): void {
 
-    this.giftTypeService.putGiftType(giftType).subscribe( response => {
+    this.reCaptchaV3Service.execute("updateGiftType").subscribe( token => {
 
-      this.giftTypes = response;
+      this.giftTypeService.putGiftType(giftType, token).subscribe( response => {
+
+        this.giftTypes = response;
+  
+      });
 
     });
 
@@ -55,11 +68,15 @@ export class GiftTypeComponent implements OnInit {
 
   deleteGiftType(giftType: GiftType): void {
 
-    this.giftTypeService.deleteGiftType(giftType.id).subscribe( response => {
+    this.reCaptchaV3Service.execute("deleteGiftType").subscribe( token => {
 
-      this.giftTypes = response;
+      this.giftTypeService.deleteGiftType(giftType.id, token).subscribe( response => {
 
-    });
+        this.giftTypes = response;
+  
+      });
+
+    });    
 
   }
 
