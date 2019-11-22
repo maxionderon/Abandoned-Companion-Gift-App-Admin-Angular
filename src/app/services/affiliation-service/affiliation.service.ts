@@ -42,7 +42,7 @@ export class AffiliationService {
     let headers: HttpHeaders = new HttpHeaders();
 
     headers = headers.set('Content-Type', 'application/json');
-    headers = headers.set('recaptcha-response', token);
+    headers = headers.set( environment.recaptchaResponseHeaderString, token);
 
     return { headers };
 

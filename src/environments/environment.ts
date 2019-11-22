@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseURL: "http://localhost:8080",
-  dialogWidth: "90%"
+  dialogWidth: "90%",
+  recaptchaResponseHeaderString: "recaptcha-response"
 };
 
 /*
