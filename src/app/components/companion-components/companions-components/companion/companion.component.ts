@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanionService } from 'src/app/services/companion-service/companion.service';
 import { Companion } from 'src/app/model/companion';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-companion',
@@ -11,7 +12,7 @@ export class CompanionComponent implements OnInit {
 
   companions: Companion[] = [];
 
-  constructor(private companionService: CompanionService ) { }
+  constructor(private companionService: CompanionService, private reCaptchaV3Service: ReCaptchaV3Service) { }
 
   ngOnInit() {
 
@@ -21,21 +22,29 @@ export class CompanionComponent implements OnInit {
 
   getCompanions(): void  {
 
-    this.companionService.getCompanions().subscribe( companions => {
+    this.reCaptchaV3Service.execute("getCompanions").subscribe( token => {
 
-      this.companions = companions
+      this.companionService.getCompanions(token).subscribe( companions => {
 
-    });
+        this.companions = companions
+  
+      });
+
+    });    
 
   }
 
   deleteCompanion(companion: Companion): void {
 
-    this.companionService.deleteCompanion(companion). subscribe( companions => {
+    this.reCaptchaV3Service.execute("deleteCompanion").subscribe( token => {
 
-      this.companions = companions;
+      this.companionService.deleteCompanion(companion, token). subscribe( companions => {
 
-    });
+        this.companions = companions;
+  
+      });
+
+    });    
 
   }
 

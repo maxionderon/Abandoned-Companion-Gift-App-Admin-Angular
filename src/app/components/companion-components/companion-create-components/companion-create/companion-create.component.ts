@@ -267,7 +267,11 @@ export class CompanionCreateComponent implements OnInit {
       companion.affiliations = this.companionAffiliations;
       companion.gifts = this.companionGifts;
 
-      this.companionService.postCompanion(companion).subscribe();
+      this.reCaptchaV3Service.execute("createCopmanion").subscribe( token => {
+
+        this.companionService.postCompanion(companion, token).subscribe();
+
+      });      
 
       this.companionAffiliations = [];
       this.companionGifts = [];

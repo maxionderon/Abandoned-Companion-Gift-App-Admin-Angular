@@ -9,29 +9,37 @@ import { environment } from 'src/environments/environment';
 })
 export class CompanionService {
   url = environment.baseURL + "/companion";
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  
 
   constructor(private http: HttpClient) { }
 
-  getCompanions(): Observable<Companion[]> {
+  getCompanions(token: string): Observable<Companion[]> {
 
-    return this.http.get<Companion[]>(this.url, this.httpOptions);
+    return this.http.get<Companion[]>(this.url, this.getHttpOptions(token));
     
   }
 
-  postCompanion(companion: Companion): Observable<Companion[]> {
+  postCompanion(companion: Companion, token: string): Observable<Companion[]> {
 
-    return this.http.post<Companion[]>(this.url, companion, this.httpOptions);
+    return this.http.post<Companion[]>(this.url, companion, this.getHttpOptions(token));
+
+  }
+
+  deleteCompanion(companion: Companion, token: string): Observable<Companion[]> {
+
+    return this.http.delete<Companion[]>(this.url + "/" + companion.id, this.getHttpOptions(token));
 
   }
 
-  deleteCompanion(companion: Companion): Observable<Companion[]> {
+  getHttpOptions(token: string) {
 
-    return this.http.delete<Companion[]>(this.url + "/" + companion.id);
+    let headers: HttpHeaders = new HttpHeaders();
+
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('recaptcha-response', token);
+
+    return { headers };
 
   }
-  
+
 }
