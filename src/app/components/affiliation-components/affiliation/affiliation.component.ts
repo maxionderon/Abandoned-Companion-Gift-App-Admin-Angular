@@ -6,6 +6,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 
 import { AffiliationCreateDialogComponent } from '../affiliation-create-dialog/affiliation-create-dialog.component';
 import { environment } from 'src/environments/environment';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-affiliation',
@@ -16,7 +17,7 @@ export class AffiliationComponent implements OnInit {
 
   affiliations: Affiliation[];
 
-  constructor(private affiliationService: AffiliationService, private affiliationCreateDialog: MatDialog) { }
+  constructor(private affiliationService: AffiliationService,private reCaptchaV3Service: ReCaptchaV3Service , private affiliationCreateDialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -26,19 +27,27 @@ export class AffiliationComponent implements OnInit {
 
   createAffiliation(affiliation: Affiliation): void {    
 
-      this.affiliationService.postAffiliation(affiliation).subscribe( response => {
+    this.reCaptchaV3Service.execute('createAffiliation').subscribe( token => {
+
+      this.affiliationService.postAffiliation(affiliation, token).subscribe( response => {
 
         this.affiliations = response;
 
-      });    
+      });   
+
+    });     
 
   }
 
   getAffiliations(): void {
 
-    this.affiliationService.getAffiliations().subscribe( e => {
+    this.reCaptchaV3Service.execute('getAffiliations').subscribe( token => {
 
-      this.affiliations = e;
+      this.affiliationService.getAffiliations(token).subscribe( e => {
+
+        this.affiliations = e;
+  
+      });
 
     });
 
@@ -46,22 +55,30 @@ export class AffiliationComponent implements OnInit {
 
   updateAffiliation(affiliation: Affiliation):void {
 
-    this.affiliationService.putAffiliation(affiliation).subscribe(response => {
+    this.reCaptchaV3Service.execute("updateAffiliation").subscribe( token => {
 
-      this.affiliations = response;
+      this.affiliationService.putAffiliation(affiliation, token).subscribe(response => {
+
+        this.affiliations = response;
+  
+      });
 
     });
 
   }
 
   deleteAffiliation(affiliation: Affiliation): void {
-    
-    this.affiliationService.deleteAffiliation(affiliation.id).subscribe(response => {
 
-      this.affiliations = response;
-    
+    this.reCaptchaV3Service.execute("deleteAffiliation").subscribe( token => {
+
+      this.affiliationService.deleteAffiliation(affiliation.id, token).subscribe(response => {
+
+        this.affiliations = response;
+      
+      });
+
     });
-    
+       
   }
   
   dialogCreateAffiliation(): void {

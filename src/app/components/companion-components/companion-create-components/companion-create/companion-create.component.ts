@@ -14,6 +14,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { AddAffiliationToCompanionDialogComponent } from '../add-affiliation-to-companion-dialog/add-affiliation-to-companion-dialog.component';
 import { AddCompanionGiftToCompanionDialogComponent } from '../add-companion-gift-to-companion-dialog/add-companion-gift-to-companion-dialog.component';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-companion-create',
@@ -32,7 +33,7 @@ export class CompanionCreateComponent implements OnInit {
   formControlCompanionName = new FormControl( '', Validators.maxLength(250));
   formControlCompanionDescription = new FormControl('', Validators.maxLength(65000));
 
-  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private router: Router, private addAffiliationDialog: MatDialog, private addCompanionGiftsDialog: MatDialog) { }
+  constructor(private affiliationService: AffiliationService, private giftReactionService: GiftReactionService, private giftTypeService: GiftTypeService, private companionService: CompanionService, private reCaptchaV3Service: ReCaptchaV3Service, private router: Router, private addAffiliationDialog: MatDialog, private addCompanionGiftsDialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -84,17 +85,21 @@ export class CompanionCreateComponent implements OnInit {
 
   getAffiliationOptions() {
 
-    this.affiliationService.getAffiliations().subscribe(affiliationOptions => {
+    this.reCaptchaV3Service.execute('getAffiliations').subscribe( token  => {
 
-      this.affiliationOptions = affiliationOptions;
+      this.affiliationService.getAffiliations(token).subscribe(affiliationOptions => {
 
-      for (let i = 0; i !== this.companionAffiliations.length; i = i + 1) {
+        this.affiliationOptions = affiliationOptions;
+  
+        for (let i = 0; i !== this.companionAffiliations.length; i = i + 1) {
+  
+          this.removeAffiliationOption(this.companionAffiliations[i]);
+  
+        }
+  
+      });
 
-        this.removeAffiliationOption(this.companionAffiliations[i]);
-
-      }
-
-    });
+    }); 
 
   }
 

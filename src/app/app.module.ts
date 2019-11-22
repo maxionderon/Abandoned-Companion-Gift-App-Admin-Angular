@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -46,6 +49,7 @@ import { GiftReactionDeleteDialogComponent } from './components/gift-Reaction-co
 import { GiftReactionModificationDialogComponent } from './components/gift-Reaction-components/gift-reaction-modification-dialog/gift-reaction-modification-dialog.component';
 import { AddAffiliationToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-affiliation-to-companion-dialog/add-affiliation-to-companion-dialog.component';
 import { AddCompanionGiftToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-companion-gift-to-companion-dialog/add-companion-gift-to-companion-dialog.component';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -77,6 +81,7 @@ import { AddCompanionGiftToCompanionDialogComponent } from './components/compani
   ],
   imports: [
     BrowserModule,
+    RecaptchaV3Module,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -97,7 +102,9 @@ import { AddCompanionGiftToCompanionDialogComponent } from './components/compani
     MatSidenavModule,
     MatDividerModule
   ],
-  providers: [],
+  providers: [
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6Lez8sMUAAAAAJimvPySjZBRb5H7X0UtvVPCWEwe"}
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     AffiliationCreateDialogComponent,

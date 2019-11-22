@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Affiliation } from '../../model/affiliation';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -12,33 +11,40 @@ export class AffiliationService {
 
   url = environment.baseURL + "/affiliation";
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(private http: HttpClient) { }
 
-  getAffiliations(): Observable<Affiliation[]> {
-
-    return this.http.get<Affiliation[]>(this.url);
+  getAffiliations( token: string): Observable<Affiliation[]> { 
+         
+    return this.http.get<Affiliation[]>(this.url, this.getHttpOptions(token) );
 
   }
 
-  postAffiliation(affiliation: Affiliation): Observable<any> {
+  postAffiliation(affiliation: Affiliation, token: string): Observable<Affiliation[]> {
 
-    return this.http.post(this.url, affiliation, this.httpOptions);
+    return this.http.post<Affiliation[]>(this.url, affiliation, this.getHttpOptions(token));
     
   }
 
-  putAffiliation(affiliation: Affiliation): Observable<any> {
+  putAffiliation(affiliation: Affiliation, token: string): Observable<Affiliation[]> {
 
-    return this.http.put(this.url + "/" + affiliation.id, affiliation, this.httpOptions);
+    return this.http.put<Affiliation[]>(this.url + "/" + affiliation.id, affiliation, this.getHttpOptions(token));
 
   }
 
-  deleteAffiliation(id: number): Observable<any> {
+  deleteAffiliation(id: number, token: string): Observable<Affiliation[]> {
 
-    return this.http.delete(this.url + "/" + id);
+    return this.http.delete<Affiliation[]>(this.url + "/" + id, this.getHttpOptions(token));
+
+  }
+
+  getHttpOptions(token: string) {
+
+    let headers: HttpHeaders = new HttpHeaders();
+
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('recaptcha-response', token);
+
+    return { headers };
 
   }
   
