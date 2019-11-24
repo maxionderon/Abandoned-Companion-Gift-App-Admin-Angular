@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseURL: "http://localhost:8080",
+  baseURL: "https://maxionderon-companion-gift-app.herokuapp.com",
   dialogWidth: "90%",
   recaptchaResponseHeaderString: "recaptcha-response"
 };
