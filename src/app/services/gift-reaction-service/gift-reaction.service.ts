@@ -31,7 +31,7 @@ export class GiftReactionService {
 
   }
 
-  deleteGiftReaction(id: number, token: string): Observable<GiftReaction[]> {
+  deleteGiftReaction(id: string, token: string): Observable<GiftReaction[]> {
 
     return this.http.delete<GiftReaction[]>(this.url + "/" + id, this.getHttpOptions(token) );
     

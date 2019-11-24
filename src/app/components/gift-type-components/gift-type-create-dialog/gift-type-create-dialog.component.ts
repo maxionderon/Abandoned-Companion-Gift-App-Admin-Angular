@@ -50,7 +50,7 @@ export class GiftTypeCreateDialogComponent implements OnInit {
 
       let giftType = new GiftType();
 
-      giftType.id = 0;
+      giftType.id = "";
       giftType.type = this.formControlGiftTypeName.value;
 
       this.giftTypeCreateDialogRef.close(giftType);

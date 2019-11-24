@@ -31,7 +31,7 @@ export class AffiliationService {
 
   }
 
-  deleteAffiliation(id: number, token: string): Observable<Affiliation[]> {
+  deleteAffiliation(id: string, token: string): Observable<Affiliation[]> {
 
     return this.http.delete<Affiliation[]>(this.url + "/" + id, this.getHttpOptions(token));
 

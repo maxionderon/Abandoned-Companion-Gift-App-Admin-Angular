@@ -30,7 +30,7 @@ export class GiftTypeService {
 
   }
 
-  deleteGiftType(id: number, token: string): Observable<GiftType[]> {
+  deleteGiftType(id: string, token: string): Observable<GiftType[]> {
 
     return this.http.delete<GiftType[]>(this.url + "/" + id, this.getHttpOptions(token));
 

@@ -3,7 +3,7 @@ import { GiftReaction } from './gift-reaction';
 
 export class CompanionGift {
 
-    id: number;
+    id: string;
     romancedReaction: boolean;
     giftType: GiftType;
     giftReaction: GiftReaction;

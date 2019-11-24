@@ -48,7 +48,7 @@ export class AffiliationCreateDialogComponent implements OnInit {
     if(this.formControlAffiliationName.valid) {
 
       let affiliation = new Affiliation();
-      affiliation.id = 0;
+      affiliation.id = null;
       affiliation.name = this.formControlAffiliationName.value;
       //this.affiliationName.reset();
 

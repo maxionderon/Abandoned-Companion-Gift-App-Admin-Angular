@@ -3,7 +3,7 @@ import { CompanionGift } from './companion-gift';
 
 export class Companion {
 
-    id: number;
+    id: string;
     name: string;
     description: string;
     affiliations: Affiliation[];

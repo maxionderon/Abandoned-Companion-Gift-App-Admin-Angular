@@ -1,6 +1,6 @@
 export class GiftReaction {
 
-    id: number;
+    id: string;
     name: string;
     gainFactor: number;
 

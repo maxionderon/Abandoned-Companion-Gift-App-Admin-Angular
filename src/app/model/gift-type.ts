@@ -1,6 +1,6 @@
 export class GiftType {
 
-    id: number;
+    id: string;
     type: string;
 
 }

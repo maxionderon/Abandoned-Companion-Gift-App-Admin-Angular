@@ -261,7 +261,7 @@ export class CompanionCreateComponent implements OnInit {
 
       let companion = new Companion();
 
-      companion.id = 0;
+      companion.id = null;
       companion.name = this.formControlCompanionName.value;
       companion.description = this.formControlCompanionDescription.value;
       companion.affiliations = this.companionAffiliations;

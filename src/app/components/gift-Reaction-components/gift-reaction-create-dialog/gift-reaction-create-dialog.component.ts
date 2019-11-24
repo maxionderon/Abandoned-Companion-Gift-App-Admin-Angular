@@ -75,7 +75,7 @@ export class GiftReactionCreateDialogComponent implements OnInit {
 
       let giftReaction = new GiftReaction();
 
-      giftReaction.id = 0;
+      giftReaction.id = "";
       giftReaction.name = this.formControlGiftReactionName.value;
       giftReaction.gainFactor = this.formControlGiftReactionGainFactor.value;
 
