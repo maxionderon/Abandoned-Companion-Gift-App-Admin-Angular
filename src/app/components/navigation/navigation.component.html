@@ -1,0 +1,71 @@
+<div fxLayout="column" fxFill>
+
+  <div fxLayout="row">
+
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a routerLink="/">
+        <span>Companion Gift App - Admin</span>
+      </a>
+    </mat-toolbar>
+
+  </div>
+
+  <mat-sidenav-container style="height: 100%;">
+
+    <mat-sidenav #drawer opened [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"
+      [style.width]="(isHandset$ | async) ? '70%' : '20%'" [style.margin]="(isHandset$ | async) ? '0%' : '1%'">
+     
+      <mat-toolbar color="accent">Menu</mat-toolbar>
+      <mat-nav-list>
+        <mat-divider></mat-divider>
+        <a routerLink="/companion" routerLinkActive="active-link" (click)="closeSideNav()">
+          <mat-list-item>
+            <span>Companions</span>
+          </mat-list-item>
+        </a>
+        <mat-divider></mat-divider>
+        <a routerLink="/affiliations" routerLinkActive="active-link" (click)="closeSideNav()">
+          <mat-list-item>
+            <span>Affiliations</span>
+          </mat-list-item>
+        </a>
+        <mat-divider></mat-divider>
+        <a routerLink="/giftTypes" routerLinkActive="active-link" (click)="closeSideNav()">
+          <mat-list-item>
+            <span>Gift Types</span>
+          </mat-list-item>
+        </a>
+        <mat-divider></mat-divider>
+        <a routerLink="/giftReactions" routerLinkActive="active-link" (click)="closeSideNav()">
+          <mat-list-item>
+            <span>Gift Reactions</span>
+          </mat-list-item>
+        </a>
+        <mat-divider></mat-divider>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <div style="margin-left: 5%; margin-right: 5%; padding-top: 1%; padding-bottom: 1%;">
+
+        <router-outlet></router-outlet>
+
+      </div>
+      
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="center center">
+
+    <a href="https://maxionderon.github.io"><span>© Maximilian Meyer</span></a>
+
+  </mat-toolbar>
+
+</div>

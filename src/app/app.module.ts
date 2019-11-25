@@ -50,6 +50,8 @@ import { GiftReactionModificationDialogComponent } from './components/gift-React
 import { AddAffiliationToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-affiliation-to-companion-dialog/add-affiliation-to-companion-dialog.component';
 import { AddCompanionGiftToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-companion-gift-to-companion-dialog/add-companion-gift-to-companion-dialog.component';
 import { environment } from 'src/environments/environment';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -77,7 +79,8 @@ import { environment } from 'src/environments/environment';
     GiftReactionDeleteDialogComponent,
     GiftReactionModificationDialogComponent,
     AddAffiliationToCompanionDialogComponent,
-    AddCompanionGiftToCompanionDialogComponent
+    AddCompanionGiftToCompanionDialogComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,8 @@ import { environment } from 'src/environments/environment';
     MatToolbarModule,
     MatDialogModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    LayoutModule
   ],
   providers: [
     { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6Lez8sMUAAAAAJimvPySjZBRb5H7X0UtvVPCWEwe"}
