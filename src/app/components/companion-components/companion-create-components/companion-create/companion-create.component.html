@@ -38,8 +38,8 @@
                 </app-companion-create-affiliation-element>
             </mat-list-item>
             <mat-list-item *ngIf="affiliationOptions.length > 0" style="width: 100%">
-                <button mat-stroked-button (click)="dialogAddAffiliation()" style="width: 100%">
-                    <mat-icon class="createIcon">add_circle_outline</mat-icon>
+                <button mat-stroked-button color="accent" (click)="dialogAddAffiliation()" style="width: 100%">
+                    <mat-icon>add_circle_outline</mat-icon>
                     <span>Add Affiliation to Companion</span>
                 </button>
             </mat-list-item>
@@ -57,8 +57,8 @@
             </mat-list-item>
 
             <mat-list-item *ngIf="giftTypeOptions.length > 0">
-                <button mat-stroked-button (click)="dialogAddCompanionGiftsToCompanion()" style="width: 100%">
-                    <mat-icon class="createIcon">add_circle_outline</mat-icon>
+                <button mat-stroked-button color="primary" (click)="dialogAddCompanionGiftsToCompanion()" style="width: 100%">
+                    <mat-icon>add_circle_outline</mat-icon>
                     <span>Add Gifts to Companion</span>
                 </button>
             </mat-list-item>
@@ -68,8 +68,8 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-stroked-button (click)="createCompanion()">
-            <mat-icon class="createIcon">add_circle_outline</mat-icon>
+        <button mat-raised-button color="accent" (click)="createCompanion()">
+            <mat-icon class="buttonIcon">add_circle_outline</mat-icon>
             <span>Create Companion</span>
         </button>
     </mat-card-actions>

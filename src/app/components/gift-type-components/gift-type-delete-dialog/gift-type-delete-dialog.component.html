@@ -4,13 +4,13 @@
 
 <mat-dialog-actions>
 
-    <button mat-stroked-button (click)="abortDelete()">
-        <mat-icon>clear</mat-icon>
+    <button mat-stroked-button color="warn" (click)="abortDelete()">
+        <mat-icon class="buttonIcon">clear</mat-icon>
         <span>No</span>
     </button>
 
-    <button mat-stroked-button (click)="deleteGiftType()">
-        <mat-icon>check</mat-icon>
+    <button mat-stroked-button color="primary" (click)="deleteGiftType()">
+        <mat-icon class="buttonIcon">check</mat-icon>
         <span>Yes</span>
     </button>
 
