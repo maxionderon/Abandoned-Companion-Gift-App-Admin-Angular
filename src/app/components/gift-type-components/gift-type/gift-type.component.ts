@@ -85,6 +85,7 @@ export class GiftTypeComponent implements OnInit {
     const dialogConfigCreateGiftType = new MatDialogConfig();
 
     dialogConfigCreateGiftType.width = environment.dialogWidth;
+    dialogConfigCreateGiftType.position = { top: environment.dialogPositionTop};
 
     const dialogRef = this.giftTypeCreateDialog.open(GiftTypeCreateDialogComponent, dialogConfigCreateGiftType);
 

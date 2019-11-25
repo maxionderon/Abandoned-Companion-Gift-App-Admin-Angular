@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   baseURL: "http://localhost:8080",
   dialogWidth: "90%",
+  dialogPositionTop: "10%",
+  recaptchaSiteKey: "6Lez8sMUAAAAAJimvPySjZBRb5H7X0UtvVPCWEwe",
   recaptchaResponseHeaderString: "recaptcha-response"
 };
 

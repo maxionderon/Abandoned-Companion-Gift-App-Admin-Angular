@@ -180,8 +180,6 @@ export class CompanionCreateComponent implements OnInit {
 
   removeGiftTypeOption(giftType: GiftType): void {
 
-    console.log( giftType);
-
     for( let i = 0; i !== this.giftTypeOptions.length; i = i + 1 ) {
 
       if( giftType.id === this.giftTypeOptions[i].id ) {
@@ -214,6 +212,7 @@ export class CompanionCreateComponent implements OnInit {
     const dialogConfigAddAffiliation = new MatDialogConfig();
 
     dialogConfigAddAffiliation.width = environment.dialogWidth;
+    dialogConfigAddAffiliation.position = { top: environment.dialogPositionTop};
     dialogConfigAddAffiliation.data = this.affiliationOptions;
 
     const dialogRef = this.addAffiliationDialog.open(AddAffiliationToCompanionDialogComponent, dialogConfigAddAffiliation);
@@ -239,6 +238,7 @@ export class CompanionCreateComponent implements OnInit {
     const dialogConfidAddCompanionGiftsToCompanion = new MatDialogConfig()
 
     dialogConfidAddCompanionGiftsToCompanion.width = environment.dialogWidth;
+    dialogConfidAddCompanionGiftsToCompanion.position = { top: environment.dialogPositionTop};
     dialogConfidAddCompanionGiftsToCompanion.data = { giftReaction: this.giftReactionOptions, giftTypes: this.giftTypeOptions }
     
     const dialogRef = this.addCompanionGiftsDialog.open( AddCompanionGiftToCompanionDialogComponent, dialogConfidAddCompanionGiftsToCompanion);

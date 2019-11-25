@@ -46,6 +46,7 @@ export class GiftReactionElementComponent implements OnInit {
     const dialogConfigModifyGiftReaction = new MatDialogConfig();
 
     dialogConfigModifyGiftReaction.width = environment.dialogWidth;
+    dialogConfigModifyGiftReaction.position = { top: environment.dialogPositionTop};
     dialogConfigModifyGiftReaction.data = this.giftReaction;
 
     const dialogRef = this.giftReactionModifyDialog.open(GiftReactionModificationDialogComponent, dialogConfigModifyGiftReaction);
@@ -67,6 +68,7 @@ export class GiftReactionElementComponent implements OnInit {
     const dialogConfigDeleteGiftReaction = new MatDialogConfig();
 
     dialogConfigDeleteGiftReaction.width = environment.dialogWidth;
+    dialogConfigDeleteGiftReaction.position = { top: environment.dialogPositionTop};
     dialogConfigDeleteGiftReaction.data = this.giftReaction;
 
     const dialogRef = this.giftReactionDeleteDialog.open(GiftReactionDeleteDialogComponent, dialogConfigDeleteGiftReaction)

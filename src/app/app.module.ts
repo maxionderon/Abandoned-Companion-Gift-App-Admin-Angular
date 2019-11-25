@@ -107,7 +107,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     LayoutModule
   ],
   providers: [
-    { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6Lez8sMUAAAAAJimvPySjZBRb5H7X0UtvVPCWEwe"}
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: environment.recaptchaSiteKey }
   ],
   bootstrap: [AppComponent],
   entryComponents: [

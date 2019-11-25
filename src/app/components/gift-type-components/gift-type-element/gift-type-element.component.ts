@@ -45,6 +45,7 @@ export class GiftTypeElementComponent implements OnInit {
     const dialogConfigModifyGiftType = new MatDialogConfig();
 
     dialogConfigModifyGiftType.width = environment.dialogWidth;
+    dialogConfigModifyGiftType.position = { top: environment.dialogPositionTop};
     dialogConfigModifyGiftType.data = this.giftType;
 
     const dialogRef = this.giftTypeModificationDialog.open(GiftTypeModificationDialogComponent, dialogConfigModifyGiftType);
@@ -66,6 +67,7 @@ export class GiftTypeElementComponent implements OnInit {
     const dialogConfigDeleteGiftType = new MatDialogConfig();
 
     dialogConfigDeleteGiftType.width = environment.dialogWidth;
+    dialogConfigDeleteGiftType.position = { top: environment.dialogPositionTop};
     dialogConfigDeleteGiftType.data = this.giftType;
 
     const dialogRef = this.giftTypeDeleteDialog.open(GiftTypeDeleteDialogComponent, dialogConfigDeleteGiftType);

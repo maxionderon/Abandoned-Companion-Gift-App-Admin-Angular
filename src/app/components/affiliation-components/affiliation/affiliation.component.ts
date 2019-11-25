@@ -86,6 +86,7 @@ export class AffiliationComponent implements OnInit {
     const dialogConfigCreateAffiliation = new MatDialogConfig();
 
     dialogConfigCreateAffiliation.width = environment.dialogWidth;
+    dialogConfigCreateAffiliation.position = { top: environment.dialogPositionTop};
   
     const dialogRef = this.affiliationCreateDialog.open(AffiliationCreateDialogComponent, dialogConfigCreateAffiliation);
 
