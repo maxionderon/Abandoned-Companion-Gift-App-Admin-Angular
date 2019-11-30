@@ -50,22 +50,20 @@
         </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content fxLayout="column">
 
-      <div style="margin-left: 5%; margin-right: 5%; padding-top: 1%; padding-bottom: 1%;">
+      <div style="margin-left: 5%; margin-right: 5%; padding-top: 1%; padding-bottom: 1%;" fxFlex>
 
         <router-outlet></router-outlet>
 
       </div>
+
+      <app-footer *ngIf="(isHandset$ | async) ? true : false"></app-footer>
       
     </mat-sidenav-content>
 
   </mat-sidenav-container>
 
-  <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="center center">
-
-    <a href="https://maxionderon.github.io"><span>© Maximilian Meyer</span></a>
-
-  </mat-toolbar>
-
+  <app-footer *ngIf="(isHandset$ | async) ? false : true"></app-footer>
+  
 </div>
