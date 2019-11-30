@@ -23,15 +23,10 @@
         </mat-card>
 
     </mat-card-content>
-
-    <mat-card-actions>
-        
-        <button mat-raised-button color="accent" (click)="dialogCreateGiftTypes()">
-            <mat-icon class="buttonIcon">add_circle_outline</mat-icon>
-            <span>Create New Gift Type</span>
-        </button>
-    
-    </mat-card-actions>
-
+                
 </mat-card>
 
+<button mat-fab color="accent" style="position: fixed; bottom: 10%; right: 5%;" matTooltip="Create New Gift Type"
+    aria-label="Create New Gift Type" (click)="dialogCreateGiftTypes()">
+    <mat-icon>add</mat-icon>
+</button>

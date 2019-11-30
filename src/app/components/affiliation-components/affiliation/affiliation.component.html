@@ -26,14 +26,10 @@
 
 
     </mat-card-content>
-
-    <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="dialogCreateAffiliation()">
-            <mat-icon class="buttonIcon">add_circle_outline</mat-icon>
-            <span>Create New Affiliation</span>
-        </button>
-
-
-    </mat-card-actions>
-
+    
 </mat-card>
+
+<button mat-fab color="accent" style="position: fixed; bottom: 10%; right: 5%;" matTooltip="Create New Affiliation"
+    aria-label="Create New Affiliation" (click)="dialogCreateAffiliation()">
+    <mat-icon>add</mat-icon>
+</button>

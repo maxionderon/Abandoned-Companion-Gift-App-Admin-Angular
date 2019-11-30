@@ -52,7 +52,7 @@ import { AddCompanionGiftToCompanionDialogComponent } from './components/compani
 import { environment } from 'src/environments/environment';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { FooterComponent } from './components/footer/footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({

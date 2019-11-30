@@ -13,13 +13,11 @@
 
     </mat-card-content>
 
-    <mat-card-actions>
-        <a routerLink="/companion/create">
-            <button mat-raised-button (click)="true">
-                <mat-icon class="buttonIcon">add_circle_outline</mat-icon>
-                <span>Create New Companion</span>
-            </button>
-        </a>
-    </mat-card-actions>
-
 </mat-card>
+
+<a routerLink="/companion/create">
+    <button mat-fab color="accent" style="position: fixed; bottom: 10%; right: 5%;" matTooltip="Create New Companion"
+        aria-label="Create New Companion">
+        <mat-icon>add</mat-icon>
+    </button>
+</a>
