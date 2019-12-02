@@ -20,7 +20,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"
       [style.width]="(isHandset$ | async) ? '70%' : '20%'" [style.margin]="(isHandset$ | async) ? '0%' : '1%'">
      
-      <mat-toolbar color="accent">Menu</mat-toolbar>
+      <mat-toolbar color="accent">Options</mat-toolbar>
       <mat-nav-list>
         <mat-divider></mat-divider>
         <a routerLink="/companion" routerLinkActive="active-link" (click)="closeSideNav()">

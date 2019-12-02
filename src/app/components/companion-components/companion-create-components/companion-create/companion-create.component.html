@@ -10,7 +10,8 @@
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Companion Name" [formControl]="formControlCompanionName" required>
             <mat-hint align="start">
-                <mat-error *ngIf="!formControlCompanionName.valid&&(formControlCompanionName.dirty||formControlCompanionName.touched)">
+                <mat-error
+                    *ngIf="!formControlCompanionName.valid&&(formControlCompanionName.dirty||formControlCompanionName.touched)">
                     {{getErrorMessageCompanionName()}}
                 </mat-error>
             </mat-hint>
@@ -21,7 +22,8 @@
             <textarea matInput cdkTextareaAutosize placeholder="Companion Description"
                 [formControl]="formControlCompanionDescription" required></textarea>
             <mat-hint align="start">
-                <mat-error *ngIf="!formControlCompanionDescription.valid&&(formControlCompanionDescription.dirty||formControlCompanionDescription.touched)">
+                <mat-error
+                    *ngIf="!formControlCompanionDescription.valid&&(formControlCompanionDescription.dirty||formControlCompanionDescription.touched)">
                     {{getErrorMessageCompanionDescription()}}
                 </mat-error>
             </mat-hint>
@@ -57,7 +59,8 @@
             </mat-list-item>
 
             <mat-list-item *ngIf="giftTypeOptions.length > 0">
-                <button mat-stroked-button color="primary" (click)="dialogAddCompanionGiftsToCompanion()" style="width: 100%">
+                <button mat-stroked-button color="primary" (click)="dialogAddCompanionGiftsToCompanion()"
+                    style="width: 100%">
                     <mat-icon>add_circle_outline</mat-icon>
                     <span>Add Gifts to Companion</span>
                 </button>
@@ -68,10 +71,15 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="createCompanion()">
-            <mat-icon class="buttonIcon">add_circle_outline</mat-icon>
-            <span>Create Companion</span>
-        </button>
+        <div style="margin: 1%;">
+
+            <button mat-raised-button color="accent" (click)="createCompanion()" style="width: 100%;">
+                <mat-icon class="buttonIcon">add_circle_outline</mat-icon>
+                <span>Create Companion</span>
+            </button>
+
+        </div>
+
     </mat-card-actions>
 
 </mat-card>

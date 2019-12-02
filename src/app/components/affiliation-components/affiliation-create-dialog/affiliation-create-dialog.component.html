@@ -1,32 +1,43 @@
-<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Affiliation Creation"(click)="abortAffiliationCreation()">clear</mat-icon>
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Affiliation Creation"
+    (click)="abortAffiliationCreation()">clear</mat-icon>
 
 <h2 mat-dialog-title> Create New Affiliation</h2>
 
 <mat-dialog-content>
     <mat-form-field floatLabel="always" style="width: 100%" appearance="outline">
         <mat-label>Name of the Affiliation</mat-label>
-        <input matInput placeholder="Name the new Affiliation" required
-            [formControl]="formControlAffiliationName">
-            <mat-hint align="start">
-                    <mat-error *ngIf="formControlAffiliationName.invalid&&(formControlAffiliationName.dirty||formControlAffiliationName.touched)">
-                        {{getErrorMessage()}}
-                    </mat-error>
-            </mat-hint>
-            <mat-hint align="end">{{formControlAffiliationName.value.length}} / 250</mat-hint>
+        <input matInput placeholder="Name the new Affiliation" required [formControl]="formControlAffiliationName">
+        <mat-hint align="start">
+            <mat-error
+                *ngIf="formControlAffiliationName.invalid&&(formControlAffiliationName.dirty||formControlAffiliationName.touched)">
+                {{getErrorMessage()}}
+            </mat-error>
+        </mat-hint>
+        <mat-hint align="end">{{formControlAffiliationName.value.length}} / 250</mat-hint>
     </mat-form-field>
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
+    <div style="margin: 1%; width: 100%;" fxLayout="row" fxLayoutGap="1%" fxLayout.lt-md="column">
 
-    <button mat-stroked-button color="warn" (click)="abortAffiliationCreation()">
-        <mat-icon class="buttonIcon">clear</mat-icon>
-        <span>Abort Creation</span>
-    </button>
+        <div fxFlex="50" fxFlex.lt-md="100">
+            <button mat-stroked-button color="warn" (click)="abortAffiliationCreation()" style="width: 100%;">
+                <mat-icon class="buttonIcon">clear</mat-icon>
+                <span>Abort Creation</span>
+            </button>
+        </div>
 
-    <button mat-stroked-button color="primary" (click)="createAffiliation()">
-        <mat-icon class="buttonIcon">check</mat-icon>
-        <span>Create Affiliation</span>
-    </button>
+        <div fxFlex="50" fxFlex.lt-md="100">
+            <button mat-stroked-button color="primary" (click)="createAffiliation()" style="width: 100%;">
+                <mat-icon class="buttonIcon">check</mat-icon>
+                <span>Create Affiliation</span>
+            </button>
+        </div>
+
+    </div>
+
+
+
 
 </mat-dialog-actions>

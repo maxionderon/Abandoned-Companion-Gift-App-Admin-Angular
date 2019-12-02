@@ -1,17 +1,26 @@
-<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Affiliation Delete" (click)="abortDelete()">clear</mat-icon>
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Affiliation Delete" (click)="abortDelete()">clear
+</mat-icon>
 
 <h2 mat-dialog-title> Delete Affiliation: {{affiliation.name}}</h2>
 
 <mat-dialog-actions>
+    
+    <div style="margin: 1%; width: 100%;" fxLayout="row" fxLayoutGap="1%" fxLayout.lt-md="column">
 
-    <button mat-stroked-button color="warn" (click)="abortDelete()">
-        <mat-icon class="buttonIcon">clear</mat-icon>
-        <span>No</span>
-    </button>
+        <div fxFlex="50" fxFlex.lt-md="100">
 
-    <button mat-stroked-button color="primary" (click)="deleteAffiliation()">
-        <mat-icon class="buttonIcon">check</mat-icon>
-        <span>Yes</span>
-    </button>
+            <button mat-stroked-button color="warn" (click)="abortDelete()" style="width: 100%;">
+                <mat-icon class="buttonIcon">clear</mat-icon>
+                <span>No</span>
+            </button>
+        </div>
+        <div fxFlex="50" fxFlex.lt-md="100">
+            <button mat-stroked-button color="primary" (click)="deleteAffiliation()" style="width: 100%;">
+                <mat-icon class="buttonIcon">check</mat-icon>
+                <span>Yes</span>
+            </button>
+        </div>
+
+    </div>
 
 </mat-dialog-actions>

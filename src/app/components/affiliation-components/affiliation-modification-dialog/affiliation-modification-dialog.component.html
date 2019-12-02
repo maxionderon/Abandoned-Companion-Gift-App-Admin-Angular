@@ -6,10 +6,10 @@
 <mat-dialog-content>
     <mat-form-field floatLabel="always" style="width: 100%" appearance="outline">
         <mat-label>Rename the Affiliation</mat-label>
-        <input matInput placeholder="Rename the Affiliation" required
-            [formControl]="formControlAffiliationName">
+        <input matInput placeholder="Rename the Affiliation" required [formControl]="formControlAffiliationName">
         <mat-hint align="start">
-            <mat-error *ngIf="formControlAffiliationName.invalid&&(formControlAffiliationName.dirty||formControlAffiliationName.touched)">
+            <mat-error
+                *ngIf="formControlAffiliationName.invalid&&(formControlAffiliationName.dirty||formControlAffiliationName.touched)">
                 {{getErrorMessage()}}
             </mat-error>
         </mat-hint>
@@ -20,14 +20,26 @@
 
 <mat-dialog-actions>
 
-    <button mat-stroked-button color="warn" (click)="abortAffiliationModification()">
-        <mat-icon class="buttonIcon">clear</mat-icon>
-        <span>Abort Modification</span>
-    </button>
+    <div style="margin: 1%; width: 100%;" fxLayout="row" fxLayoutGap="1%" fxLayout.lt-md="column">
 
-    <button mat-stroked-button color="primary" (click)="modifyAffiliation()">
-        <mat-icon class="buttonIcon">sync</mat-icon>
-        <span>Update Affiliation</span>
-    </button>
+        <div fxFlex="50" fxFlex.lt-md="100">
+            <button mat-stroked-button color="warn" (click)="abortAffiliationModification()" style="width: 100%;">
+                <mat-icon class="buttonIcon">clear</mat-icon>
+                <span>Abort Modification</span>
+            </button>
+        </div>
+
+        <div fxFlex="50" fxFlex.lt-md="100">
+            <button mat-stroked-button color="primary" (click)="modifyAffiliation()" style="width: 100%;">
+                <mat-icon class="buttonIcon">sync</mat-icon>
+                <span>Update Affiliation</span>
+            </button>
+        </div>
+
+    </div>
+
+
+
+
 
 </mat-dialog-actions>
