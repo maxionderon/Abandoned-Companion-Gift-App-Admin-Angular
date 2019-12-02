@@ -1,4 +1,5 @@
-<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Add Affiliation to Companion"(click)="abortAddAffiliationToCompanion()">clear</mat-icon>
+<mat-icon style="float: right; cursor: pointer" matTooltip="Abort Add Affiliation to Companion"
+    (click)="abortAddAffiliationToCompanion()">clear</mat-icon>
 
 <h2 mat-dialog-title> Add Affiliation to Companion</h2>
 
@@ -6,7 +7,7 @@
 
     <mat-form-field style="width: 100%;">
 
-        <mat-select placeholder="Affiliation" [formControl]="affiliationSelectFormControl" required multiple >
+        <mat-select placeholder="Affiliation" [formControl]="affiliationSelectFormControl" required multiple>
             <mat-option *ngFor="let affiliation of affiliationsOptions" [value]="affiliation">{{affiliation.name}}
             </mat-option>
         </mat-select>
@@ -18,14 +19,26 @@
 
 <mat-dialog-actions>
 
-    <button mat-stroked-button color="warn" (click)="abortAddAffiliationToCompanion()">
-        <mat-icon class="buttonIcon">clear</mat-icon>
-        <span>Abort</span>
-    </button>
+    <div style="margin: 1%; width: 100%;" fxLayout="row" fxLayoutGap="1%" fxLayout.lt-md="column">
 
-    <button mat-stroked-button color="primary" (click)="addAffiliationToCompanion()">
-        <mat-icon class="buttonIcon">check</mat-icon>
-        <span>Add Affiliation to Companion</span>
-    </button>
+        <div fxFlex="50" fxFlex.lt-md="100">
+
+            <button mat-stroked-button color="warn" (click)="abortAddAffiliationToCompanion()" style="width: 100%;">
+                <mat-icon class="buttonIcon">clear</mat-icon>
+                <span>Abort</span>
+            </button>
+
+        </div>
+
+        <div fxFlex="50" fxFlex.lt-md="100">
+
+            <button mat-stroked-button color="primary" (click)="addAffiliationToCompanion()" style="width: 100%;">
+                <mat-icon class="buttonIcon">check</mat-icon>
+                <span>Add Affiliation to Companion</span>
+            </button>
+
+        </div>
+
+    </div>
 
 </mat-dialog-actions>
