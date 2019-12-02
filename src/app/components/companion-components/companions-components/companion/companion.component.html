@@ -1,22 +1,12 @@
-<mat-card class="maxionderon-card-background">
+<h1 class="mat-h1">Companions</h1>
+<h2 class="mat-h2">Current Companions</h2>
 
-    <mat-card-header>
-        <mat-card-title>Companion</mat-card-title>
-        <mat-card-subtitle>Current Companions</mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-
-        <app-companion-details *ngFor="let companion of companions" [companion]="companion"
-            (eventDeleteCompanion)="deleteCompanion($event)" style="width: 100%">
-        </app-companion-details>
-
-    </mat-card-content>
-
-</mat-card>
+<app-companion-details *ngFor="let companion of companions" [companion]="companion"
+    (eventDeleteCompanion)="deleteCompanion($event)" style="width: 100%">
+</app-companion-details>
 
 <a routerLink="/companion/create">
-    <button mat-fab color="accent" style="position: sticky; bottom: 5%; left: 95%;" matTooltip="Create New Companion"
+    <button mat-fab color="accent" style="position: sticky; bottom: 5%; left: 95%; z-index: 50;" matTooltip="Create New Companion"
         aria-label="Create New Companion">
         <mat-icon>add</mat-icon>
     </button>

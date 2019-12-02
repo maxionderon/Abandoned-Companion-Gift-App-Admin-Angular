@@ -1,47 +1,66 @@
-<mat-card>
+<mat-card class="maxionderon-card-background">
+
+  <mat-card-title>
+    <span>{{companion.name}}</span>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <span>{{getAffiliationsSubHeader()}}</span>
+  </mat-card-subtitle>
 
   <mat-card-content>
 
-    <form style="width: 100%">
-      <mat-form-field style="width: 100%">
-        <input matInput placeholder="Name" value="{{companion.name}}" readonly>
-      </mat-form-field>
+    <mat-tab-group mat-stretch-tabs style="background-color: white;">
+      <mat-tab>
 
-      <mat-form-field style="width: 100%">
-        <textarea matInput cdkTextareaAutosize placeholder="Description" value="{{companion.description}}" readonly></textarea>
-      </mat-form-field>
+        <ng-template mat-tab-label>
+          <mat-icon>portrait</mat-icon>
+          <span>Description</span>
+        </ng-template>
 
-    </form>
+        <mat-card style="margin: 1%;">
+          <mat-card-content>
+            <div>
+              <span style="white-space: pre-wrap;">{{companion.description}}</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
 
-    <mat-list>
-      <h3 mat-subheader>Affiliations</h3>
+      </mat-tab>
+      <mat-tab>
 
-      <mat-list-item *ngFor="let affiliation of companion.affiliations">
+        <ng-template mat-tab-label>
+          <mat-icon>card_giftcard</mat-icon>
+          <span>Gifts</span>
+        </ng-template>
 
-        {{affiliation.name}}
+        <app-companion-gift-table [companionGifts]="companion.gifts"></app-companion-gift-table>
 
-      </mat-list-item>
-
-    </mat-list>
-
-    <mat-list>
-      <h4 mat-subheader>Companion Gifts</h4>
-
-      <mat-list-item *ngFor="let companionGift of companion.gifts">
-
-        {{companionGift.giftType.type}} {{companionGift.giftReaction.name}}
-
-      </mat-list-item>
-
-    </mat-list>
+      </mat-tab>
+    </mat-tab-group>
 
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-stroked-button (click)="deleteCompanion()">
-      <mat-icon class="buttonIcon">delete</mat-icon>
-      <span>Delete Companion</span>
-    </button>
+
+    <div style="margin: 1%;" fxLayout="row" fxLayoutGap="1%" fxLayout.lt-md="column">
+
+      <div fxFlex="50" fxFlex.lt-md="100">
+        <button mat-raised-button color="accent" disabled (click)="true" style="width: 100%;">
+          <mat-icon class="buttonIcon">create</mat-icon>
+          <span>Modify Companion</span>
+        </button>
+      </div>
+      <div fxFlex="50" fxFlex.lt-md="100">
+        <button mat-raised-button color="warn" (click)="dialogDeleteCompanion()" style="width: 100%;">
+          <mat-icon class="buttonIcon">delete</mat-icon>
+          <span>Delete Companion</span>
+        </button>
+      </div>
+    
+    </div>
+
   </mat-card-actions>
+
+
 
 </mat-card>

@@ -25,6 +25,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatDividerModule} from '@angular/material/divider'; 
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
@@ -53,6 +56,8 @@ import { environment } from 'src/environments/environment';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FooterComponent } from './components/footer/footer.component';
+import { CompanionGiftTableComponent } from './components/companion-components/companions-components/companion-gift-table/companion-gift-table.component';
+import { CompanionDeleteDialogComponent } from './components/companion-components/companions-components/companion-delete-dialog/companion-delete-dialog.component';
 
 
 @NgModule({
@@ -82,7 +87,9 @@ import { FooterComponent } from './components/footer/footer.component';
     AddAffiliationToCompanionDialogComponent,
     AddCompanionGiftToCompanionDialogComponent,
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    CompanionGiftTableComponent,
+    CompanionDeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +113,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatDialogModule,
     MatSidenavModule,
     MatDividerModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSortModule,
     LayoutModule
   ],
   providers: [
@@ -123,7 +133,8 @@ import { FooterComponent } from './components/footer/footer.component';
     GiftReactionDeleteDialogComponent,
     GiftReactionModificationDialogComponent,
     AddAffiliationToCompanionDialogComponent,
-    AddCompanionGiftToCompanionDialogComponent
+    AddCompanionGiftToCompanionDialogComponent,
+    CompanionDeleteDialogComponent
   ]
 })
 export class AppModule { }
