@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
@@ -28,6 +28,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+
+import { MatIconRegistry } from '@angular/material';
 
 import { AffiliationComponent } from './components/affiliation-components/affiliation/affiliation.component';
 import { AffiliationElementComponent } from './components/affiliation-components/affiliation-element/affiliation-element.component';
@@ -137,4 +139,10 @@ import { CompanionDeleteDialogComponent } from './components/companion-component
     CompanionDeleteDialogComponent
   ]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer){
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg')); // Or whatever path you placed mdi.svg at
+  }
+
+}

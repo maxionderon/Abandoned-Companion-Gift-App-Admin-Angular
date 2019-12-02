@@ -1,5 +1,34 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="center center">
+<mat-toolbar color="primary" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
 
-    <a href="https://maxionderon.github.io"><span>© Maximilian Meyer</span></a>
+    <mat-toolbar-row fxLayoutAlign="center center" fxFlexOrder="1" fxFlexOrder.lt-md="1">
+        <a href="https://github.com/maxionderon">
+            <mat-icon svgIcon="github-circle" matTooltip="Github" matTooltipPosition="above"></mat-icon>
+        </a>
+        <a href="https://gitlab.com/maxionderon" class="icon">
+            <mat-icon svgIcon="bitbucket" matTooltip="Bitbucket" matTooltipPosition="above"></mat-icon>
+        </a>
+        <a href="https://bitbucket.org/%7B665299ed-d025-4878-a92e-28e4b538ddc6%7D/">
+            <mat-icon svgIcon="gitlab" matTooltip="Gitlab" matTooltipPosition="above"></mat-icon>
+        </a>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row fxLayoutAlign="center center" fxFlexOrder="2" fxFlexOrder.lt-md="3">
+
+        <a href="https://maxionderon.github.io"><span>© Maximilian Meyer</span></a>
+
+    </mat-toolbar-row>
+
+    <mat-toolbar-row fxLayoutAlign="center center" fxFlexOrder="3" fxFlexOrder.lt-md="2">
+
+        <a href="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F100003971921220%2F">
+            <mat-icon svgIcon="facebook-messenger" matTooltip="Messenger" matTooltipPosition="above"></mat-icon>
+        </a>
+        <a href="https://www.facebook.com/MaximilianPeterMeyer" class="icon">
+            <mat-icon svgIcon="facebook-box" matTooltip="Facebook" matTooltipPosition="above"></mat-icon>
+        </a>
+        <a href="https://www.instagram.com/maxionderon/">
+            <mat-icon svgIcon="instagram" matTooltip="Instagram" matTooltipPosition="above"></mat-icon>
+        </a>
+    </mat-toolbar-row>
 
 </mat-toolbar>
