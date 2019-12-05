@@ -20,7 +20,7 @@
 <a name="1."></a>
 ## 1. Purpose of this project
 
-With this app it is possible to maintain the database of the Companion-App. It is possible to CRUD companions (at the moment just read and delete), affiliations, gift types and gift reactions.
+With this app it is possible to maintain the database of the Companion-App. It is possible to CRUD companions (at the moment just create, read and delete), affiliations, gift types and gift reactions.
 
 A [demo](https://maxionderon.dev/Companion-Gift-App-Admin-Angular/) of the application is deployed via GitHub Pages and connects to a [Heroku](https://www.heroku.com/) hosted Spring Boot REST API. 
 
@@ -61,6 +61,7 @@ Securing the used REST-API from abusive behavior is archived via [ng-recaptcha](
 ## 4. Planned Feature for later release
 
 * modification components for companions
+* loading indicators
 
 <a name="5."></a>
 ## 5. How to install the application
