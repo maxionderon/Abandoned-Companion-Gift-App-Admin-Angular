@@ -58,7 +58,7 @@ Securing the used REST-API from abusive behavior is archived via [ng-recaptcha](
 * version 0.1
 
 <a name="4."></a>
-## 4. Planned Feature for later release
+## 4. Planned feature for later release
 
 * modification components for companions
 * loading indicators
