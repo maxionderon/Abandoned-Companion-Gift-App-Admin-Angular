@@ -3,6 +3,7 @@ import { CompanionService } from 'src/app/services/companion-service/companion.s
 import { Companion } from 'src/app/model/companion';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { LoadingSpinnerService } from 'src/app/services/loading-spinner-service/loading-spinner.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-companion',
@@ -13,7 +14,7 @@ export class CompanionComponent implements OnInit {
 
   companions: Companion[] = [];
 
-  constructor(private companionService: CompanionService, private reCaptchaV3Service: ReCaptchaV3Service, private loadingSpinnerService: LoadingSpinnerService) { }
+  constructor(private companionService: CompanionService, private reCaptchaV3Service: ReCaptchaV3Service, private loadingSpinnerService: LoadingSpinnerService, private router: Router) { }
 
   ngOnInit() {
 
@@ -33,6 +34,12 @@ export class CompanionComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });    
@@ -51,9 +58,21 @@ export class CompanionComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });    
+
+  }
+
+  errorRouting(): void {
+
+    this.router.navigateByUrl("/service-not-available");
 
   }
 

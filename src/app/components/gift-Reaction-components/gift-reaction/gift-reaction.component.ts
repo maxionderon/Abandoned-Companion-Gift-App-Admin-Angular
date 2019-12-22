@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { GiftReactionCreateDialogComponent } from '../gift-reaction-create-dialog/gift-reaction-create-dialog.component';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { LoadingSpinnerService } from 'src/app/services/loading-spinner-service/loading-spinner.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gift-reaction',
@@ -17,7 +18,7 @@ export class GiftReactionComponent implements OnInit {
   giftReactions: GiftReaction[];
 
   constructor(private giftReactionService: GiftReactionService, private reCaptchaV3Service: ReCaptchaV3Service,
-    private giftReactionCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService) { }
+    private giftReactionCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService, private router: Router) { }
 
   ngOnInit() {
 
@@ -37,6 +38,12 @@ export class GiftReactionComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });
@@ -55,6 +62,12 @@ export class GiftReactionComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });    
@@ -73,6 +86,12 @@ export class GiftReactionComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });
@@ -91,6 +110,12 @@ export class GiftReactionComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });
@@ -115,6 +140,12 @@ export class GiftReactionComponent implements OnInit {
       }
 
     });
+
+  }
+
+  errorRouting(): void {
+
+    this.router.navigateByUrl("/service-not-available");
 
   }
 

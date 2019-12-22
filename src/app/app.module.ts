@@ -62,6 +62,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CompanionGiftTableComponent } from './components/companion-components/companions-components/companion-gift-table/companion-gift-table.component';
 import { CompanionDeleteDialogComponent } from './components/companion-components/companions-components/companion-delete-dialog/companion-delete-dialog.component';
 import { LoadingSpinnerComponent } from './components/spinner/loading-spinner/loading-spinner.component';
+import { NotFoundComponent } from './components/error-components/not-found/not-found.component';
+import { ServiceNotAvailableComponent } from './components/error-components/service-not-available/service-not-available.component';
 
 
 @NgModule({
@@ -94,7 +96,9 @@ import { LoadingSpinnerComponent } from './components/spinner/loading-spinner/lo
     FooterComponent,
     CompanionGiftTableComponent,
     CompanionDeleteDialogComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    NotFoundComponent,
+    ServiceNotAvailableComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { GiftTypeCreateDialogComponent } from '../gift-type-create-dialog/gift-t
 import { environment } from 'src/environments/environment';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { LoadingSpinnerService } from 'src/app/services/loading-spinner-service/loading-spinner.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gift-type',
@@ -17,7 +18,7 @@ export class GiftTypeComponent implements OnInit {
   giftTypes: GiftType[];
 
   constructor(private giftTypeService: GiftTypeService, private reCaptchaV3Service: ReCaptchaV3Service,
-    private giftTypeCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService) { }
+    private giftTypeCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService, private router: Router) { }
 
   ngOnInit() {
 
@@ -34,6 +35,12 @@ export class GiftTypeComponent implements OnInit {
       this.giftTypeService.getGiftTypes(token).subscribe( giftTypes => {
 
         this.giftTypes = giftTypes;
+
+        this.loadingSpinnerService.hideOverlay();
+        
+      }, () => {
+
+        this.errorRouting();
 
         this.loadingSpinnerService.hideOverlay();
         
@@ -55,6 +62,12 @@ export class GiftTypeComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });
@@ -73,6 +86,12 @@ export class GiftTypeComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });
@@ -91,6 +110,12 @@ export class GiftTypeComponent implements OnInit {
 
         this.loadingSpinnerService.hideOverlay();
   
+      }, () => {
+
+        this.errorRouting();
+
+        this.loadingSpinnerService.hideOverlay();
+        
       });
 
     });    
@@ -115,6 +140,12 @@ export class GiftTypeComponent implements OnInit {
       }
 
     });
+
+  }
+
+  errorRouting(): void {
+
+    this.router.navigateByUrl("/service-not-available");
 
   }
 

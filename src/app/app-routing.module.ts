@@ -6,6 +6,8 @@ import { GiftReactionComponent } from './components/gift-Reaction-components/gif
 import { CompanionCreateComponent } from './components/companion-components/companion-create-components/companion-create/companion-create.component';
 import { CompanionComponent } from './components/companion-components/companions-components/companion/companion.component';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/error-components/not-found/not-found.component';
+import { ServiceNotAvailableComponent } from './components/error-components/service-not-available/service-not-available.component';
 
 
 
@@ -15,8 +17,10 @@ const routes: Routes = [
   { path: "giftReactions", component: GiftReactionComponent },
   { path: "companion", component: CompanionComponent },
   { path: "companion/create", component: CompanionCreateComponent },
-  { path: "", component: HomeComponent }  
-
+  { path: "not-found", component: NotFoundComponent},
+  { path: "service-not-available", component: ServiceNotAvailableComponent}, 
+  { path: "", component: HomeComponent },
+  { path: "**", redirectTo: 'not-found'}
 ];
 
 @NgModule({
