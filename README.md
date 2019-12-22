@@ -55,13 +55,14 @@ Securing the used REST-API from abusive behavior is archived via [ng-recaptcha](
 <a name="3."></a>
 ## 3. Changelog
 
+* version 0.2
+  * loading indicators added
 * version 0.1
 
 <a name="4."></a>
 ## 4. Planned feature for later release
 
 * modification components for companions
-* loading indicators
 
 <a name="5."></a>
 ## 5. How to install the application
