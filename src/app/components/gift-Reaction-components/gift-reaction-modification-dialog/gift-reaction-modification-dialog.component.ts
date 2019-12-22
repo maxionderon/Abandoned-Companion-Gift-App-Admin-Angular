@@ -23,7 +23,7 @@ export class GiftReactionModificationDialogComponent implements OnInit {
 
       this.formControlGiftReactionName = new FormControl("", [Validators.maxLength(250), sameValueValidator(this.giftReaction.name)]);
       this.formControlGiftReactionName.setValue(this.giftReaction.name);
-      this.formControlGiftReactionGainFactor = new FormControl("", [Validators.min(0), Validators.max(2000000000), sameValueValidator(this.giftReaction.gainFactor.toString())]);
+      this.formControlGiftReactionGainFactor = new FormControl("", [Validators.min(0), Validators.max(2000000000)]);
       this.formControlGiftReactionGainFactor.setValue(this.giftReaction.gainFactor);
 
     }

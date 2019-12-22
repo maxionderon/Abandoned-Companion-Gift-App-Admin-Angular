@@ -5,6 +5,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { GiftReactionCreateDialogComponent } from '../gift-reaction-create-dialog/gift-reaction-create-dialog.component';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { LoadingSpinnerService } from 'src/app/services/loading-spinner-service/loading-spinner.service';
 
 @Component({
   selector: 'app-gift-reaction',
@@ -16,7 +17,7 @@ export class GiftReactionComponent implements OnInit {
   giftReactions: GiftReaction[];
 
   constructor(private giftReactionService: GiftReactionService, private reCaptchaV3Service: ReCaptchaV3Service,
-    private giftReactionCreateDialog: MatDialog) { }
+    private giftReactionCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService) { }
 
   ngOnInit() {
 
@@ -26,11 +27,15 @@ export class GiftReactionComponent implements OnInit {
 
   createGiftReaction(giftReaction: GiftReaction): void {
 
+    this.loadingSpinnerService.showOverlay();
+
     this.reCaptchaV3Service.execute("createGiftReaction").subscribe( token => {
 
       this.giftReactionService.postGiftReaction(giftReaction, token).subscribe( response =>  {
 
         this.giftReactions = response;
+
+        this.loadingSpinnerService.hideOverlay();
   
       });
 
@@ -40,11 +45,15 @@ export class GiftReactionComponent implements OnInit {
 
   getGiftReactions(): void {
 
+    this.loadingSpinnerService.showOverlay();
+
     this.reCaptchaV3Service.execute("getGiftReactions").subscribe( token => {
 
       this.giftReactionService.getGiftReactions(token).subscribe( response => {
 
         this.giftReactions = response;
+
+        this.loadingSpinnerService.hideOverlay();
   
       });
 
@@ -54,11 +63,15 @@ export class GiftReactionComponent implements OnInit {
 
   updateGiftReaction(giftReaction: GiftReaction): void {
 
+    this.loadingSpinnerService.showOverlay();
+
     this.reCaptchaV3Service.execute("updateGiftReaction").subscribe( token => {
 
       this.giftReactionService.putGiftReaction(giftReaction, token).subscribe( response => {
 
         this.giftReactions = response;
+
+        this.loadingSpinnerService.hideOverlay();
   
       });
 
@@ -68,11 +81,15 @@ export class GiftReactionComponent implements OnInit {
 
   deleteGiftReaction(giftReaction: GiftReaction): void {
 
+    this.loadingSpinnerService.showOverlay();
+
     this.reCaptchaV3Service.execute("deleteGiftReaction").subscribe( token => {
 
       this.giftReactionService.deleteGiftReaction(giftReaction.id, token).subscribe( response => {
 
         this.giftReactions = response;
+
+        this.loadingSpinnerService.hideOverlay();
   
       });
 

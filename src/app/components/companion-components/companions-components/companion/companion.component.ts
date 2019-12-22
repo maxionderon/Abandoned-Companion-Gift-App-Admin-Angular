@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompanionService } from 'src/app/services/companion-service/companion.service';
 import { Companion } from 'src/app/model/companion';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { LoadingSpinnerService } from 'src/app/services/loading-spinner-service/loading-spinner.service';
 
 @Component({
   selector: 'app-companion',
@@ -12,7 +13,7 @@ export class CompanionComponent implements OnInit {
 
   companions: Companion[] = [];
 
-  constructor(private companionService: CompanionService, private reCaptchaV3Service: ReCaptchaV3Service) { }
+  constructor(private companionService: CompanionService, private reCaptchaV3Service: ReCaptchaV3Service, private loadingSpinnerService: LoadingSpinnerService) { }
 
   ngOnInit() {
 
@@ -22,11 +23,15 @@ export class CompanionComponent implements OnInit {
 
   getCompanions(): void  {
 
+    this.loadingSpinnerService.showOverlay();
+
     this.reCaptchaV3Service.execute("getCompanions").subscribe( token => {
 
       this.companionService.getCompanions(token).subscribe( companions => {
 
         this.companions = companions
+
+        this.loadingSpinnerService.hideOverlay();
   
       });
 
@@ -36,11 +41,15 @@ export class CompanionComponent implements OnInit {
 
   deleteCompanion(companion: Companion): void {
 
+    this.loadingSpinnerService.showOverlay();
+
     this.reCaptchaV3Service.execute("deleteCompanion").subscribe( token => {
 
       this.companionService.deleteCompanion(companion, token). subscribe( companions => {
 
         this.companions = companions;
+
+        this.loadingSpinnerService.hideOverlay();
   
       });
 
