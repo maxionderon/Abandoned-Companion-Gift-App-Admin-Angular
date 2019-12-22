@@ -54,12 +54,14 @@ import { GiftReactionDeleteDialogComponent } from './components/gift-Reaction-co
 import { GiftReactionModificationDialogComponent } from './components/gift-Reaction-components/gift-reaction-modification-dialog/gift-reaction-modification-dialog.component';
 import { AddAffiliationToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-affiliation-to-companion-dialog/add-affiliation-to-companion-dialog.component';
 import { AddCompanionGiftToCompanionDialogComponent } from './components/companion-components/companion-create-components/add-companion-gift-to-companion-dialog/add-companion-gift-to-companion-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { environment } from 'src/environments/environment';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FooterComponent } from './components/footer/footer.component';
 import { CompanionGiftTableComponent } from './components/companion-components/companions-components/companion-gift-table/companion-gift-table.component';
 import { CompanionDeleteDialogComponent } from './components/companion-components/companions-components/companion-delete-dialog/companion-delete-dialog.component';
+import { LoadingSpinnerComponent } from './components/spinner/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -91,7 +93,8 @@ import { CompanionDeleteDialogComponent } from './components/companion-component
     NavigationComponent,
     FooterComponent,
     CompanionGiftTableComponent,
-    CompanionDeleteDialogComponent
+    CompanionDeleteDialogComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +121,7 @@ import { CompanionDeleteDialogComponent } from './components/companion-component
     MatTabsModule,
     MatTableModule,
     MatSortModule,
+    MatProgressSpinnerModule,
     LayoutModule
   ],
   providers: [
@@ -136,7 +140,8 @@ import { CompanionDeleteDialogComponent } from './components/companion-component
     GiftReactionModificationDialogComponent,
     AddAffiliationToCompanionDialogComponent,
     AddCompanionGiftToCompanionDialogComponent,
-    CompanionDeleteDialogComponent
+    CompanionDeleteDialogComponent,
+    LoadingSpinnerComponent
   ]
 })
 export class AppModule { 
