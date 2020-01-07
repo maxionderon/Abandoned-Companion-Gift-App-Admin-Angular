@@ -55,6 +55,8 @@ Securing the used REST-API from abusive behavior is archived via [ng-recaptcha](
 <a name="3."></a>
 ## 3. Changelog
 
+* version 0.3
+  * search function for companions
 * version 0.2a
   * 404 logic for GitHub Pages
 * version 0.2
