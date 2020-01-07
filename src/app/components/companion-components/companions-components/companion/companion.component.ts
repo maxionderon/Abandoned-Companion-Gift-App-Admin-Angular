@@ -14,6 +14,8 @@ import { FormControl } from '@angular/forms';
 export class CompanionComponent implements OnInit {
 
   companions: Companion[] = [];
+  
+  dataIsFetched: boolean = false;
 
   diplayedCompanions: Companion[] = [];
 
@@ -39,12 +41,14 @@ export class CompanionComponent implements OnInit {
 
         this.setDisplayedCompanions(companions);
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
   
       }, () => {
 
         this.errorRouting();
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
         
       });
@@ -63,7 +67,7 @@ export class CompanionComponent implements OnInit {
 
         this.companions = companions;
 
-        if( this.formControlSearchByCompanionName.value === "") {
+        if( this.formControlSearchByCompanionName.value === "" || this.formControlSearchByCompanionName.value === null ) {
 
           this.setDisplayedCompanions(companions);
 

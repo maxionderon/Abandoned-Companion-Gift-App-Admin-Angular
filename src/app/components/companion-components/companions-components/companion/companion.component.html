@@ -13,8 +13,12 @@
     (eventDeleteCompanion)="deleteCompanion($event)" style="width: 100%">
 </app-companion-details>
 
-<div *ngIf="diplayedCompanions.length === 0">
+<div *ngIf="diplayedCompanions.length === 0 && companions.length !== 0">
     <span>{{formControlSearchByCompanionName.value}} can not be found!</span>
+</div>
+
+<div *ngIf="companions.length === 0 && dataIsFetched === true">
+    <span>No Companions available</span>
 </div>
 
 <a routerLink="/companion/create">

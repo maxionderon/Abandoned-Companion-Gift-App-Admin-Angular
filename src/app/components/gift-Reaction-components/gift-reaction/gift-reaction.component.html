@@ -2,7 +2,7 @@
 <h2 class="mat-h2">Current Gift Reactions</h2>
 
 
-<mat-card class="maxionderon-card-background">
+<mat-card class="maxionderon-card-background" *ngIf="giftReactions.length !== 0">
 
     <mat-card-content>
 
@@ -22,10 +22,13 @@
 
     </mat-card-content>
 
-
 </mat-card>
 
+<div *ngIf="giftReactions.length === 0 && dataIsFetched===true">
+    <span>No Gift Reactions available</span>
+</div>
+
 <button mat-fab color="accent" style="position: sticky; bottom: 5%; left: 95%;" matTooltip="Create New Gift Reaction"
-    aria-label="Create New Gift Reaction" (click)="dialogCreateGiftType()">
+    aria-label="Create New Gift Reaction" (click)="dialogCreateGiftReaction()">
     <mat-icon>add</mat-icon>
 </button>

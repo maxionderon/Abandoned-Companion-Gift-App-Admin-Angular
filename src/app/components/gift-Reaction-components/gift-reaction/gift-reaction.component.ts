@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
 })
 export class GiftReactionComponent implements OnInit {
 
-  giftReactions: GiftReaction[];
+  giftReactions: GiftReaction[] = [];
+  dataIsFetched: boolean = false;
 
   constructor(private giftReactionService: GiftReactionService, private reCaptchaV3Service: ReCaptchaV3Service,
     private giftReactionCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService, private router: Router) { }
@@ -23,7 +24,7 @@ export class GiftReactionComponent implements OnInit {
   ngOnInit() {
 
     this.getGiftReactions();
-    
+        
   }
 
   createGiftReaction(giftReaction: GiftReaction): void {
@@ -35,7 +36,7 @@ export class GiftReactionComponent implements OnInit {
       this.giftReactionService.postGiftReaction(giftReaction, token).subscribe( response =>  {
 
         this.giftReactions = response;
-
+        
         this.loadingSpinnerService.hideOverlay();
   
       }, () => {
@@ -60,12 +61,14 @@ export class GiftReactionComponent implements OnInit {
 
         this.giftReactions = response;
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
   
       }, () => {
 
         this.errorRouting();
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
         
       });
@@ -122,7 +125,7 @@ export class GiftReactionComponent implements OnInit {
     
   }
   
-  dialogCreateGiftType(): void {
+  dialogCreateGiftReaction(): void {
 
     const dialogConfigCreateGiftType = new MatDialogConfig();
 

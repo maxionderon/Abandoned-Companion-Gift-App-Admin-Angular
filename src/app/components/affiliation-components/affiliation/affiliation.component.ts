@@ -17,7 +17,8 @@ import { Router } from '@angular/router';
 })
 export class AffiliationComponent implements OnInit {
 
-  affiliations: Affiliation[];
+  affiliations: Affiliation[] = [];
+  dataIsFetched: boolean = false;
 
   constructor(private affiliationService: AffiliationService, private reCaptchaV3Service: ReCaptchaV3Service , private affiliationCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService, private router: Router) { }
 
@@ -61,12 +62,14 @@ export class AffiliationComponent implements OnInit {
 
         this.affiliations = affiliations;
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
   
       }, () => {
 
         this.errorRouting();
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
         
       });   

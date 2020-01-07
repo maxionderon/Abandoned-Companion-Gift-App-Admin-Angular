@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
 })
 export class GiftTypeComponent implements OnInit {
 
-  giftTypes: GiftType[];
+  giftTypes: GiftType[] = [];
+  dataIsFetched: boolean = false;
 
   constructor(private giftTypeService: GiftTypeService, private reCaptchaV3Service: ReCaptchaV3Service,
     private giftTypeCreateDialog: MatDialog, private loadingSpinnerService: LoadingSpinnerService, private router: Router) { }
@@ -36,12 +37,14 @@ export class GiftTypeComponent implements OnInit {
 
         this.giftTypes = giftTypes;
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
         
       }, () => {
 
         this.errorRouting();
 
+        this.dataIsFetched = true;
         this.loadingSpinnerService.hideOverlay();
         
       });

@@ -1,7 +1,7 @@
 <h1 class="mat-h1">Gift Types</h1>
 <h2 class="mat-h2">Current Gift Types</h2>
 
-<mat-card class="maxionderon-card-background">
+<mat-card class="maxionderon-card-background" *ngIf="giftTypes.length !== 0">
 
     <mat-card-content>
 
@@ -19,6 +19,10 @@
     </mat-card-content>
 
 </mat-card>
+
+<div *ngIf="giftTypes.length === 0 && dataIsFetched === true">
+    <span>No Gift Types available</span>
+</div>
 
 <button mat-fab color="accent" style="position: sticky; bottom: 5%; left: 95%;" matTooltip="Create New Gift Type"
     aria-label="Create New Gift Type" (click)="dialogCreateGiftTypes()">
