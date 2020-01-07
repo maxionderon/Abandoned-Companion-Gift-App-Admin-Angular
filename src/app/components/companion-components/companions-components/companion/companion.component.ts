@@ -4,6 +4,7 @@ import { Companion } from 'src/app/model/companion';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { LoadingSpinnerService } from 'src/app/services/loading-spinner-service/loading-spinner.service';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-companion',
@@ -14,12 +15,16 @@ export class CompanionComponent implements OnInit {
 
   companions: Companion[] = [];
 
+  diplayedCompanions: Companion[] = [];
+
+  formControlSearchByCompanionName = new FormControl();
+
   constructor(private companionService: CompanionService, private reCaptchaV3Service: ReCaptchaV3Service, private loadingSpinnerService: LoadingSpinnerService, private router: Router) { }
 
   ngOnInit() {
 
     this.getCompanions();
-
+    
   }
 
   getCompanions(): void  {
@@ -31,6 +36,8 @@ export class CompanionComponent implements OnInit {
       this.companionService.getCompanions(token).subscribe( companions => {
 
         this.companions = companions
+
+        this.setDisplayedCompanions(companions);
 
         this.loadingSpinnerService.hideOverlay();
   
@@ -56,6 +63,16 @@ export class CompanionComponent implements OnInit {
 
         this.companions = companions;
 
+        if( this.formControlSearchByCompanionName.value === "") {
+
+          this.setDisplayedCompanions(companions);
+
+        } else {
+
+          this.filterCompanionByName();
+
+        }        
+
         this.loadingSpinnerService.hideOverlay();
   
       }, () => {
@@ -67,6 +84,22 @@ export class CompanionComponent implements OnInit {
       });
 
     });    
+
+  }
+
+  filterCompanionByName(): void {
+
+    this.diplayedCompanions = this.companions.filter( companion => {
+
+      return companion.name.toLowerCase().includes( this.formControlSearchByCompanionName.value.toLowerCase() );
+
+    });
+
+  }
+
+  setDisplayedCompanions(displayedCompanions: Companion[]): void {
+
+    this.diplayedCompanions = displayedCompanions;
 
   }
 
